@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Taller de R para Campo</title>
+    <meta name="generator" content="Geany 2.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* --- Configuración General y Tipografía --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f4;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* --- Contenedor Principal (Tarjeta) --- */
+        .container {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 8px solid #2e7d32; /* Verde institucional/ecológico */
+        }
+
+        /* --- Títulos --- */
+        h5 {
+            color: #1b5e20;
+            font-size: 1.25rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Pequeño detalle visual antes de cada título */
+        h5::before {
+            content: "■";
+            color: #81c784;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+
+        /* Primer título sin margen excesivo arriba */
+        h5:first-of-type {
+            margin-top: 0;
+        }
+
+        /* --- Textos y Párrafos --- */
+        p, .intro-list {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .intro-list {
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* --- Lista de Aprendizajes --- */
+        ul {
+            list-style: none; /* Quitamos los puntos por defecto */
+            padding-left: 0;
+            margin-top: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            color: #4a5568;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* Viñetas personalizadas y estilizadas */
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Destacar conceptos clave dentro del texto si lo deseas (opcional) */
+        strong {
+            color: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+		<h2>Evaluación en la Transferencia Agroecológica </h2>
+		<h3>&emsp; introducción al análisis exploratorio con R</h3>
+		
+        
+        <h5>¿Qué es este curso?</h5>
+        <p>Este taller es un espacio práctico diseñado para técnicos de campo que buscan dar 
+        el salto de la libreta de apuntes o las hojas de Excel hacia una herramienta moderna y 
+        eficiente llamada <strong>R</strong>. No es un curso de programación abstracta; es un taller de herramientas 
+        digitales aplicadas directamente al diagnóstico, evaluación y demostración de alternativas 
+        sustentables en las comunidades.
+        </p>
+        
+        <h5>¿Qué aprenderá?</h5>
+        <span class="intro-list">Al finalizar los dos días, usted será capaz de:</span>
+
+        <ul>
+            <li>Centralizar y ordenar los datos que recopila en sus visitas de campo (encuestas, muestreos, rendimientos).</li>
+            <li>Analizar con rapidez el comportamiento de tecnologías agroecológicas (como el uso de bioles o 
+            vermicomposta) frente a las prácticas tradicionales de los productores.</li>
+            <li>Generar reportes visuales claros para mostrar a los campesinos, asambleas ejidales o coordinadores 
+            institucionales mediante gráficos que demuestren el impacto real de las ecotecnologías.</li>
+        </ul>
+        
+        <h5>¿Cómo lo aplicará en su trabajo diario?</h5>
+        <p>
+        Ya no tendrá que pasar horas sumando a mano o lidiando con fórmulas complejas en Excel. Con un par de 
+        líneas de código escritas en español, podrá calcular el promedio de rendimiento de una región, filtrar 
+        a los productores que han adoptado una ecotecnología o saber exactamente qué plaga está afectando más a 
+        una comunidad. Es convertir los datos guardados en la oficina en conocimiento útil para el campo.
+        </p>
+
+    </main>
+
+</body>
+
+</html>
