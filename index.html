@@ -1,144 +1,1158 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8" />
-    <title>Taller de R para Campo</title>
-    <meta name="generator" content="Geany 2.1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CursoR - Manual del Estudiante</title>
     <style>
-        /* --- Configuración General y Tipografía --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f4;
-            color: #333333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
+    :root {
+        --primary: #27ae60;
+        --primary-dark: #1e7e43;
+        --secondary: #2c3e50;
+        --secondary-dark: #1a252f;
+        --bg-light: #f8f9fa;
+        --text-color: #333333;
+        --code-bg: #1e293b;
+        --accent: #e67e22;
+        --border-color: #e2e8f0;
+        --base-font-size: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: #f1f5f9;
+        font-size: var(--base-font-size);
+        transition: font-size 0.2s ease;
+    }
+
+    header {
+        background-color: var(--secondary);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        border-bottom: 5px solid var(--primary);
+        position: relative;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        font-style: italic;
+    }
+
+    .author-tag {
+        background-color: var(--primary);
+        color: white;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-top: 1rem;
+        font-weight: 600;
+    }
+
+    nav {
+        background-color: var(--secondary-dark);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li a {
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 1.2rem 1.5rem;
+        display: block;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-bottom: 4px solid transparent;
+        cursor: pointer;
+    }
+
+    .nav-links li a:hover, .nav-links li a.active {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-bottom: 4px solid var(--primary);
+    }
+
+    .accessibility-controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .btn-acc {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+    }
+
+    .btn-acc:hover {
+        background-color: var(--primary);
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .view {
+        display: none;
+        animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    .view.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-box {
+        background-color: white;
+        border-left: 6px solid var(--primary);
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .intro-box h2 {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+    }
+
+    .session-title {
+        color: var(--secondary);
+        border-bottom: 3px solid #dee2e6;
+        padding-bottom: 0.5rem;
+        margin-top: 3rem;
+        font-size: 1.8rem;
+    }
+
+    .block-card {
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .block-badge {
+        background-color: var(--primary);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 1.2rem;
+    }
+
+    h3 {
+        color: var(--secondary);
+        margin-top: 0;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    ul {
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    li {
+        margin-bottom: 0.8rem;
+    }
+
+    details {
+        background-color: #f8fafc;
+        border-radius: 6px;
+        padding: 0.8rem 1.2rem;
+        margin: 1.2rem 0;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    details[open] {
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-left: 5px solid var(--primary);
+    }
+
+    summary {
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--secondary);
+        outline: none;
+        user-select: none;
+        font-size: 1.05rem;
+    }
+
+    details.consejo { border-left: 5px solid var(--accent); }
+    details.consejo summary { color: var(--accent); }
+    details.consejo[open] { border-left: 5px solid var(--accent); }
+
+    details.observacion { border-left: 5px solid var(--secondary); }
+    details.observacion summary { color: var(--secondary); }
+    details.observacion[open] { border-left: 5px solid var(--secondary); }
+
+    .code-container {
+        position: relative;
+        margin: 1.5rem 0;
+    }
+
+    pre {
+        background-color: var(--code-bg);
+        color: #f8f8f2;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Courier New', Courier, monospace;
+        font-size: 0.95rem;
+    }
+
+    code {
+        font-family: 'Consolas', 'Courier New', Courier, monospace;
+        background-color: #fee2e2;
+        color: #991b1b;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    pre code {
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+    }
+
+    .btn-copy {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #cbd5e1;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.3rem 0.7rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    .table-container {
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--secondary);
+        color: white;
+        padding: 1rem;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    .alert-quote {
+        background-color: #fffbeb;
+        border-left: 5px solid #d97706;
+        padding: 1.2rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .beneficios-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .beneficios-grid {
+            grid-template-columns: 1fr;
+        }
+        nav {
+            flex-direction: column;
+            padding: 1rem;
+        }
+        .nav-links {
+            margin-bottom: 1rem;
+            width: 100%;
             justify-content: center;
         }
+    }
 
-        /* --- Contenedor Principal (Tarjeta) --- */
-        .container {
-            background-color: #ffffff;
-            max-width: 650px;
-            width: 100%;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border-top: 8px solid #2e7d32; /* Verde institucional/ecológico */
-        }
+    .beneficio-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 1.2rem;
+    }
 
-        /* --- Títulos --- */
-        h5 {
-            color: #1b5e20;
-            font-size: 1.25rem;
-            margin-top: 30px;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Pequeño detalle visual antes de cada título */
-        h5::before {
-            content: "■";
-            color: #81c784;
-            font-size: 0.8rem;
-            margin-right: 8px;
-        }
-
-        /* Primer título sin margen excesivo arriba */
-        h5:first-of-type {
-            margin-top: 0;
-        }
-
-        /* --- Textos y Párrafos --- */
-        p, .intro-list {
-            font-size: 1rem;
-            color: #4a5568;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .intro-list {
-            margin-bottom: 10px;
-            display: block;
-            font-weight: 500;
-        }
-
-        /* --- Lista de Aprendizajes --- */
-        ul {
-            list-style: none; /* Quitamos los puntos por defecto */
-            padding-left: 0;
-            margin-top: 0;
-        }
-
-        ul li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-            color: #4a5568;
-            font-size: 0.95rem;
-            text-align: justify;
-        }
-
-        /* Viñetas personalizadas y estilizadas */
-        ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #2e7d32;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        /* Destacar conceptos clave dentro del texto si lo deseas (opcional) */
-        strong {
-            color: #1b5e20;
-        }
-    </style>
+    .beneficio-card h4 {
+        color: var(--primary-dark);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>
 </head>
-
 <body>
 
-    <main class="container">
-		<h2>Evaluación en la Transferencia Agroecológica </h2>
-		<h3>&emsp; introducción al análisis exploratorio con R</h3>
+<header>
+    <h1>Exploración de Datos Numéricos con R</h1>
+    <p>Tu Guía Práctica de Aprendizaje para el Campo y el Aula</p>
+    <div class="author-tag">
+		Facilitador: Héctor René Becerril Cejudo<br>
+		hector.becerril@dgetaycm.sems.gob.mx
+    
+    </div>
+</header>
+
+<nav>
+    <ul class="nav-links">
+        <li><a onclick="navigate('home')" id="link-home" class="active">Inicio</a></li>
+        <li><a onclick="navigate('sesion1')" id="link-sesion1">Sesión 1</a></li>
+        <li><a onclick="navigate('sesion2')" id="link-sesion2">Sesión 2</a></li>
+        <li><a onclick="navigate('sesion3')" id="link-sesion2">Sesión 3</a></li>
+    </ul>
+    <div class="accessibility-controls">
+        <span style="color: #94a3b8; font-size: 0.85rem; font-weight: bold; margin-right: 0.5rem;">Letra:</span>
+        <button class="btn-acc" onclick="adjustFontSize(1)" title="Aumentar tamaño de letra">A+</button>
+        <button class="btn-acc" onclick="adjustFontSize(-1)" title="Disminuir tamaño de letra">A-</button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- RUTA 1: HOME (BIENVENIDA) -->
+    <section id="view-home" class="view active">
+        <div class="intro-box" style="text-align: justify;">
+            <h2>¡Te damos la más cálida bienvenida a tu guía de aprendizaje!</h2>
+            <p>
+                Nos entusiasma enormemente acompañarte en este espacio diseñado especialmente para ti. Sabemos que tu 
+                activo más valioso es la enorme experiencia que has acumulado en campo, en el aula, en los laboratorios, 
+                en las parcelas demostrativas, en la investigación o en la mejora y transferencia de diversas técnicas y tecnologías.
+            </p>
+            <br>
+            <p>
+                Por ello, este manual no busca reemplazar tus conocimientos prácticos, sino poner a tu disposición una <strong>herramienta
+                tecnológica</strong>. Esta herramienta te ayudará a procesar, visualizar y respaldar científicamente diversas pruebas 
+                y logros que ya realizas día con día.
+            </p>
+
+            <div class="alert-quote" style="margin-top: 2rem;">
+                <strong>Un mensaje de tranquilidad para ti:</strong><br>
+                Si es la primera vez que te enfrentas a una pantalla de código, ¡no te preocupes en lo absoluto! Esta guía está 
+                diseñada bajo el principio de <strong>"paso a paso y a tu propio ritmo"</strong>. No necesitas ser un experto en 
+                computación. Nos tomaremos el tiempo necesario para ubicar cada tecla, comprender cada error como parte del camino 
+                y divertirnos en el proceso. Aquí, las letras rojas en pantalla no significan fallas, ¡significan que estás 
+                aprendiendo a dominar esta nueva herramienta!
+            </div>
+
+            <h3 style="margin-top: 2rem;">¿Qué habilidades obtendrás al final de esta guía?</h3>
+            <p>A lo largo de estas sesiones aprenderás a dominar herramientas que transformarán por completo la manera en que 
+            manejas y reportas tu información técnica:</p>
+            
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <h4>🚜 De la libreta al botón</h4>
+                    <p>Dejarás atrás las largas horas sumando datos en calculadoras o cuadrículas de papel. Aprenderás a 
+                    pedirle a R que ordene, limpie y calcule promedios de cientos de datos de campo en menos de un segundo.</p>
+                </div>
+                <div class="beneficio-card">
+                    <h4>📊 Gráficos que "hablan solos"</h4>
+                    <p>Aprenderás a generar gráficos como diagramas de cajas (<em>boxplots</em>) que muestran de 
+                    forma clara y elegante el comportamiento de tus datos sin saturar tu reporte de números.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Requisitos para iniciar:</h3>
+            <ul>
+                <li>Tu computadora portátil (laptop) con su respectivo cargador.</li>
+                <li>Muchas ganas de explorar, experimentar y aplicar tus experiencias del campo o del aula en esta herramienta.</li>
+            </ul>
+        </div>
+        <br><br
+        
+        <details class="observacion">
+                <!-- Convertido en una explicación directa del concepto -->
+                <summary>🔍 Para romper el hielo</summary>
+                <div>
+					<ul>
+						<li>¿Cómo es mi relación con los números?</li>
+						<li>¿En que parte de mis actividades se manifiesta mayormente el uso de números?</li>
+						<li>¿Encuentro algún tipo de dificultad cuando tengo que manejar números? De ser así ¿cómo lo resuelvo?</li>
+					</ul>
+                </div>
+            </details>
+        
+        <br><br>
+        <h3>Empecemos</h3>
+        <h3>¿Qué es R?</h3>
+        <p style="text-align:justify;">R es un lenguaje de programación totalmente libre y gratuito que es utilizado a nivel mundial tanto
+        en el ámbito educativo, industrial y en la investigación científica en ramas como la biología, las ciencias 
+        económico administrativas, estudios sociales y en diversas ingenierías.</p>
+        <p style="text-align:justify;">RStudio, por otro lado, es una interfase a través de la cual el usuario puede interactuar con
+        el lenguaje R y administrar los proyectos que realices en este lenguaje.</p>
+        <br>
+        <p style="text-align:justify;"><p>Para usar R directamente desde tu computadora debes instalar dos cosas: "R" y después "RStudio". </p>
+        
+        <br>
+        <div style="padding:25px;">
+        <ol>
+				<li>R: es el paquete como tal.</li>
+				<li>RStudio: se trata del IDE desde donde programaremos.</li>
+			</ol>
+			<br>
+			* IDE: Entorno de Desarrollo Integrado
+		</div>	
+			Al tratarse de software libre basta con descargar ambos paquetes y mediante el instalador seguir los pasos que ahí se indican.
+			Te dejo las ligas para que puedas descargar ambos paquetes.
+
+        <br><br>
+        
+        &emsp;<a href="https://www.r-project.org/" target="_blank">Descarga R</a><br>
+        &emsp;<a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads" target="_blank">Descarga RStudio</a>
+        <br>
+        <br>
+        Sin embargo. Para fines prácticos de este curso-taller, nosotros no haremos ninguna instalación, sino que utilizaremos 
+        una versión en línea de R y RStudio.
+        <b>Lo primero que haremos será</b>
+        <a href="http://posit.cloud" target="_blank">crear una cuenta en posit</a> para usar R sin necesidad de instalarlo en tu computadora.
+        <br><br>
+        
+        <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <h4>🚜 Primer reto</h4>
+                    <b>Situación</b><br>
+                    <p>Eres colaborador y parte de un proyecto interinstitucional y transdisciplinario. Te piden cierta información que está 
+                    contenida en un archivo llamado "datos_meteorologicos.csv". Este archivo cuenta con datos de variables meteorológicas como Temperatura y Humedad que
+                    provienen de distintas estaciones meteorológicas.</p>
+                    
+                    <br>
+                    <h4>Responde las siguientes preguntas (10 minutos) y anota tus respuestas</h4>
+                    <ol>
+						<li>¿Cuántos registros hay en dicho archivo?</li>
+						<li>¿Cuántas variables se observaron?</li>
+						<li>¿Cuál es el valor más bajo de Temperatura y cuál el más alto?</li>
+						<li>¿Cuál es el valor más bajo de Humedad y cuál el más alto?</li>
+						<li>¿Cuántas estaciones meteorológicas se están analizando?</li>
+						<li>¿Cómo se llaman las estaciones meteorológicas regsitradas en el archivo?</li>
+						<li>¿Cuál es el lapso de registro de datos con que cuenta el archivo?</li>
+                    </ol>
+                    <br>
+                    <b>Puedes descargar al archivo en la siguiente liga</b>: <br>
+                    <a href="https://cursoclasemx.onrender.com/descargar/datos_meteorologicos.csv">datos_meteorologicos.csv</a>
+                    <br><br>
+                    <b>También descarga el siguiente archivo excel con calificaciones de un grupo imaginario, usaremos estos datos más adelante</b>:<br>
+                    <a href="https://cursoclasemx.onrender.com/descargar/registro_calificaciones.xlsx">registro_calificaciones.xlsx</a>
+                </div>
+                
+            </div>
+        
+    </section>
+
+    <!-- RUTA 2: SESIÓN 1 -->
+    <section id="view-sesion1" class="view">
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 1: Pierde el miedo al código y entiende 
+        las bases</h2>
+        
+        <!-- Bloque 1 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 1 •</span>
+           
+            
+            <h3>Vídeos de inicio</h3>
+            El enfoque profesional y de mercados:<br>
+            <a href="https://www.youtube.com/watch?v=oYtxk6UZ6SQ" target="_blank">Vídeo 1</a><br><br>
+            
+            El enfoque humano, perder el miedo:<br>
+            <a href="https://www.youtube.com/watch?v=jiWgqzsGoC4" target="_blank">Vídeo 2</a><br><br>
+            
+            R comparado con otras herramientas:<br>
+            <a href="https://www.youtube.com/watch?v=9kYUGMg_14s" target="_blank">Vídeo 3</a><br><br>
+            <br><br>
+            
+             <h3>Introducción Amigable: R como Supercalculadora</h3>
+            
+            <div style="background-color:white; color:#335533;padding:15px;">
+				Siguiendo las instrucciones de tu maestro, explora la interfase de RStudio. Después ejecutarán algunas operaciones
+				básicas directamente en la consola, como por ejemplo: 
+				<br><br>
+				5 + 20 # suma<br>
+				7 * 3  # ´multiplicación<br>
+				45 / 5 # división<br>
+				2^5    # potencia<br>
+				( 3^2 ) / ( 2 + 3) # operaciones agrupadas<br>
+            </div>
+            
+             <details class="consejo">
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
+                <summary>💡 Tip de Aprendizaje: Limpia tu consola</summary>
+                <p>Llegará el momento en que tu consola estará saturada de líneas y números. Para limpiarla usa la siguiente combianción de teclas:</p>
+                &emsp;&emsp; <b>Ctrl</b> + <b>L</b>
+            </details>
+            <br>
+            <hr>
+            <h3> RScripts</h3>
+            <p>
+				Trabajar directo en la consola es genial para experimentar, pero tiene un gran problema: es efímero. En cuanto 
+				cierras el programa o limpias la consola, todo lo que escribiste desapareció y no hay forma de recuperarlo. Para 
+				evitar esto usamos los RScripts, que son como una "receta de cocina" para tus datos. En lugar de cocinar un 
+				ingrediente a la vez, el RScript es un archivo de texto donde dejas guardados todos los pasos ordenados de tu 
+				análisis; así puedes corregir errores, guardar tu trabajo y volver a ejecutar todo tu código con un solo clic.
+            </p>
+            <br><br>
+            <div>
+				Crearemos un RScript dando click en el ícono de <b>crear nuevo archivo</b> que está en la barra de herramientas principal.
+				Seleccionaremos la opción RScript. Sigue las instrucciones del maestro para que este nuevo RScript tenga por nombre
+				"<i>clase1</i>".
+            </div>
+            <br><br>
+            <img src="imgs/crear_nvo_rscript.png">
+            <br><br>
+            
+            <details class="consejo">
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
+                <summary>💡 Tip de aprendizaje: Agregar comentarios en tu código</summary>
+                <p>Cada línea de código es una instrucción que el programa ejecutará.
+                Todo lo que escribas a la derecha de un signo  de gato (<b>#</b>) será interpretado como un comentario
+                y no como un código de instrucciones a ejecutar. Agregar comentarios en tu código es de gran utilidad
+                para explicar qué es lo que tu código hace o pretende hacer en determinada sección o línea.</p>
+            </details>
+            
+            <h4>Ejercicio: código para escribir y ejecutar desde tu RScript</h4>
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre><code># 1. Operaciones básicas
+                
+
+                # Suma
+				5 + 7  
+				
+				# Producto
+				5 * 5
+				
+				# Potencia n
+				# n = 5
+				2^5
+				
+				# Raiz n
+				# n = 5
+				32^(1/5)
+				
+				# Raíz n 
+				# n = 2 (raíz cuadrada)
+				81^(1/2)
+				
+				# Raíz cuadrada
+				sqrt(81)  
+				
+				# Logaritmo natural
+				log(9)
+
+				# NÚMEROS ESPECIALES
+				pi
+				exp(1)	
+				
+            </div>
+            
+            <p><strong>Tu objetivo:</strong> Desmitificar la programación. No vas a "escribir sistemas complejos", 
+            vas a manejar una herramienta de <b>apoyo</b> para tu trabajo. Utilizaremos la analogía de un tractor para entender 
+            cómo se divide la interfaz de RStudio:</p>
+            
+            <ul>
+                <li>
+					<strong>El Script (Editor):</strong> Es tu volante. Aquí planeas, escribes tus líneas y decides hacia 
+					dónde va el tractor antes de arrancar.
+				</li>
+                <li>
+					<strong>La Consola:</strong> Es el motor. Aquí es donde ocurre la fuerza y el código se ejecuta de 
+					verdad al presionar Enter o Run.
+				</li>
+                <li>
+					<strong>El Environment (Entorno):</strong> Es el remolque. Aquí se va acumulando tu cosecha (los datos, 
+					tablas y variables que decides guardar).
+				</li>
+            </ul>
+
+            <details class="observacion">
+                <!-- Convertido en una explicación directa del concepto -->
+                <summary>🔍 Descubre cómo funcionan las Variables y Contenedores</summary>
+                <p>Para entender el operador de asignación (<code>&lt;-</code>), imagina una caja de madera para cosechar manzanas. 
+                Si escribes <code>caja_A &lt;- 25</code>, estás rotulando virtualmente la caja con el nombre "caja_A" y estás guardando 25 
+                frutos dentro. R recordará perfectamente la cantidad de manzanas de esa caja cada vez que la llames por su nombre.</p>
+            </details>
+
+            <details class="consejo">
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
+                <summary>💡 Tip de Aprendizaje: Domina tu teclado</summary>
+                <p>Al principio, encontrar los símbolos correctos puede tomar unos segundos. Dedica un momento a ubicar caracteres 
+                clave como la flecha de asignación <code>&lt;-</code> (puedes usar el atajo <strong>Alt + guion</strong> en Windows), 
+                los paréntesis y los corchetes. Recuerda: si la pantalla se pinta de rojo, no te asustes; lee el mensaje, ajusta el 
+                símbolo y vuelve a intentarlo.</p>
+            </details>
+
+            
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						# 1. Usa R como tu supercalculadora de campo
+						x <- 20  
+						y <- 5  
+						
+						# NOTA: muestra el contenido que guardaste en los objetos "x" y "y"
+						print(x)
+						y
+						
+
+						# Calcular (x + y) guardando el resultado en una "caja" llamada z
+						z <- x + y
+						
+						# Ahora mostraremos el resultado que quedó guardado en el "contenedor" llamada z
+						print(z)
+						
+						# Entonces decimos que "x", "y" y "z" son VARIABLES
+				
+					</code>
+				
+				
+				
+				#--------------------------------
+				
+				# Ejemplo
+				#Se tiene una muestra de un tronco de <i>Pinus patula</i>. El diámetro es 
+				#...de 62 cm y tiene una longitud (o altura) de 14 metros. La 
+				#...densidad promedio de la masa seca de <i>Pinus patula</i> es 
+				#...aproximadamente de 420 gr/m<sup>3</sup> y,
+				#...aproximadamente el 48.5% de esa masa es carbono (C). <br>
+				#¿Cuál la cantidad de carbono secuestrado en la muestra?
+				
+				#-------------------------------
+				# RESOLVAMOS:
+				
+				radio <- 0.31
+				alt <- 14
+				
+				# CALCULEMOS EL VOLUMEN
+				vol <- pi * (radio^2) * alt
+				
+				# COMO YA SABEMOS EL VOLUMEN Y
+				#...CONOCEMOS LA DENSIDAD, ENTONCES
+				#...PODEMOS CALCULAR EL PESO DEL TRONCO
+				
+				gramos_madera <- 420 * vol
+				
+				# CALCULAREMOS LOS GRAMOS DE CARBONO CONTENIDOS EN LA MUESTRA
+				carb_proporcion <- 0.485
+				carbono <- gramos_madera * carb_proporcion
+
+				# PESO SECO DE NUESTRA MUESTRA (gr)
+				gramos_madera
+				
+				# GRAMOS DE CARBONO CONTENIDO EN LA MUESTRA
+				carbono
+				
+				#----------------------------------
+				
+				# Si se tiene un área de exclusión de <i>Pinus patula</i> donde 
+				#...hay 21,350 individuos con un diámetro promedio de 
+				#...45 cm y la altura promedio es de 15.35 m.
+				# ¿Cuántos kg de carbono se encuentran secuestrados en 
+				#...dicha área de exclusión?
+				
+				#-------------------------------
+				</pre>
 		
-        
-        <h5>¿Qué es este curso?</h5>
-        <p>Este taller es un espacio práctico diseñado para técnicos de campo que buscan dar 
-        el salto de la libreta de apuntes o las hojas de Excel hacia una herramienta moderna y 
-        eficiente llamada <strong>R</strong>. No es un curso de programación abstracta; es un taller de herramientas 
-        digitales aplicadas directamente al diagnóstico, evaluación y demostración de alternativas 
-        sustentables en las comunidades.
-        </p>
-        
-        <h5>¿Qué aprenderá?</h5>
-        <span class="intro-list">Al finalizar los dos días, usted será capaz de:</span>
+            </div>
+            
+            <p>Utiliza las herramientas y habilidades aprendidas para desarrollar el código en R necesario
+            para resolver el siguiente ejercicio:</p>
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code># 1. En un terreno con árboles de durazno se cosecharon 
+					#...632 kg de fruta. El terreno cuenta con un total de 
+					#...17 árboles sembrados. 		
+					#¿Cuál fue el rendimiento promedio por árbol?
+					
+					# PASO A PASO
+					#1. Crea un objeto llamado "cosecha" y guarda ahí la cantidad de kg cosechada.
+					#2. Crea un objeto llamado "arboles_num" y guarda ahí la cantidad de árboles que hay en el terreno.
+					#3. Crea un objeto llamado "rendimiento" y guarda ahí el cociente obtenido al dividir "cosecha" entre "arboles_num"
+					#4. Muestra el valor que se guardó en el objeto "rendimiento"
+                
+				</pre>
+            </div>
 
-        <ul>
-            <li>Centralizar y ordenar los datos que recopila en sus visitas de campo (encuestas, muestreos, rendimientos).</li>
-            <li>Analizar con rapidez el comportamiento de tecnologías agroecológicas (como el uso de bioles o 
-            vermicomposta) frente a las prácticas tradicionales de los productores.</li>
-            <li>Generar reportes visuales claros para mostrar a los campesinos, asambleas ejidales o coordinadores 
-            institucionales mediante gráficos que demuestren el impacto real de las ecotecnologías.</li>
-        </ul>
-        
-        <h5>¿Cómo lo aplicará en su trabajo diario?</h5>
-        <p>
-        Ya no tendrá que pasar horas sumando a mano o lidiando con fórmulas complejas en Excel. Con un par de 
-        líneas de código escritas en español, podrá calcular el promedio de rendimiento de una región, filtrar 
-        a los productores que han adoptado una ecotecnología o saber exactamente qué plaga está afectando más a 
-        una comunidad. Es convertir los datos guardados en la oficina en conocimiento útil para el campo.
-        </p>
+            
+        </div>
 
-    </main>
+        <!-- Bloque 2 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 2</span>
+            <h3>Ordenar Datos de Campo</h3>
+            <p><strong>Tu objetivo:</strong> Conectar los formatos que ya dominas (como tus hojas de cálculo tradicionales) con 
+            el entorno de R, transformando listas fijas en estructuras de datos dinámicas llamadas <strong>Data Frames</strong>.</p>
+
+            <details class="observacion">
+                <!-- Explicación directa al estudiante -->
+                <summary>🔍 ¿Para qué sirven las funciones <b>str()</b> y <b>summary()</b>?</summary>
+                <p>Imagina que <code>str()</code> es como hacerle una radiografía a tus datos para ver su estructura 
+                interna (saber si son textos o números). Por otro lado, <code>summary()</code> es una inspección técnica 
+                rápida que te arroja de inmediato el valor mínimo, el promedio y el máximo de toda tu cosecha.</p>
+            </details>
+
+            <h4>Práctica Guiada: Captura Manual de Datos</h4>
+            <p>Digita manualmente los siguientes datos en tu script utilizando la función de <b>concatenación</b> <code>c()</code>. Esto 
+            te ayudará a mecanizar la escritura de vectores estructurados.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Muestra (Planta)</th>
+                            <th>Variedad (Texto)</th>
+                            <th>Peso Fruto gramos (Numérico)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Criolla</td><td>185</td></tr>
+                        <tr><td>2</td><td>Criolla</td><td>192</td></tr>
+                        <tr><td>3</td><td>Mejorada</td><td>210</td></tr>
+                        <tr><td>4</td><td>Mejorada</td><td>225</td></tr>
+                        <tr><td>5</td><td>Testigo</td><td>150</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre><code># TU TURNO: Captura la tabla anterior en tu consola de R
+					planta <- c(1, 2, 3, 4, 5)
+					variedad <- c("Criolla", "Criolla", "Mejorada", "Mejorada", "Testigo")
+					peso_gr <- c(185, 192, 210, 225, 150)
+
+					# Agrupa tus vectores en un contenedor de datos (Data Frame)
+					mis_datos <- data.frame(planta, variedad, peso_gr)
+
+					# Inspecciona la estructura de lo que acabas de crear
+					str(mis_datos)
+					summary(mis_datos)
+					
+					# Mostraremos el contenido de lo que acabas de crear
+					mis_datos
+					
+					
+					# PLUS
+					# Exportaremos nuestro Data Frame a excel
+					# Para esto, debemos instalar primero un paquete de R llamado "writexl"
+					# Para instalar cualquier paquete usamos la función "install.packages()"
+					
+					install.packages("writexl")
+					
+					# Una vez instalado el paquete deberemos llamarlo con
+					# ...la función "library()".
+					
+					library(writexl)
+					
+					#Hemos activado el paquete "writexl"
+
+					# 2. Exportar el DataFrame a Excel con la instrucción "write_xlsx"
+					write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
+					
+					# Así hemos creado un archivo xlsx cuyo contenido corresponde al objeto "mis_datos" y 
+					#...a dicho archivo excel le hemos dado como nombre ""mis_datos_excel.xlsx".
+					# Este archivo excel estará guardado en la misma carpeta donde se ubica tu proyecto R
+					
+					</code>
+				</pre>
+            </div>
+            <br>
+            <hr>
+            
+           
+        </div>
+    </section>
+
+    <!-- RUTA 3: SESIÓN 2 -->
+    <section id="view-sesion2" class="view">
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 2: Lenguaje, funciones básicas y datos externos</h2>
+
+        <!-- Bloque 3 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 3 •</span>
+             <h3>Algunas funciones básicas y el paquete dplyr</h3>
+            <p>
+				Iinstalaremos un paquete de R llamado "dplyr" el cual utilizaremos para simplificar el
+				lenguaje de nuestro código y así poder construir "cadenas" de instrucciones anidadas.
+            </p>
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						# Primero instalaremos "dplyr"
+						
+						install.packages("dplyr")
+						
+						# Ahora activaremos el paquete instaladoo usando la función library()
+						
+						library(dplyr)
+
+					</code>
+				</pre>
+            </div>
+            
+            Ya has conocido algunas <b>funciones</b> fundamentales de R, como por ejemplo:
+            <ul>
+				<li>str()</li>
+				<li>summary()</li>
+				<li>install.packages()</li>
+				<li>library()</li>
+            </ul>
+            
+            En esta sección conoceremos algunas otras funciones como <b>table()</b>, <b>tally()</b> y también <b>group_by()</b>.<br><br>
+            En ocasiones necesitaremos
+            realizar cadenas de operaciones y ejecutar funciones de forma anidada y secuenciada, dplyr nos permite hacer eso.
+            <br><br>
+            
+            Ejemplo:<br>
+            Crearemos los objetos "x" y "y":
+            <br><br>
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						x <- 5
+						y <- 3
+						
+						# Realiza lo siguiente:
+						# suma x con y, al resultado extraerle la raíz cuadrada, y de ese
+						# último resultado obtén su logaritmo natural.
+						
+						¿Cómo sería tu aproximación para resolver esta situación?
+
+					</code>
+				</pre>
+            </div>
+            
+            <!--
+            (x + y) %>% sqrt() %>% log()
+            -->
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <!-- Bloque 4 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 4 • </span>
+			<h3>Explorando nuestros datos meteorológicos</h3>
+            Al inicio del curso tuvimos como tarea explorar un archivo csv con información
+            meteorológica proveniente de diferentes estaciones. Vamos a importar esa información
+            a nuestro proyecto R escribiendo las siguientes líneas de código:
+            <br><br>
+            
+             <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						
+						
+						
+						# le indicaremos a R donde se encuentran nuestros datos
+									
+						meteorologia <- read.csv("datos_meteorologicos.csv")
+
+						# Ahora exploraremos nuestros datos.
+						# Primero revelaremos cuál es la estructura del objeto "meteorologia"
+						str(meteorologia)
+						
+						# ¿Cuántos registros observas que tiene el objeto "meteorologia"?
+						
+						# Ahora obtendremos estadísticas rápidas de la información contenida en
+						#... el objeto "meteorologia"
+						summary(meteorologia)
+
+						table(meteorologia$NOM)
+						summary(meteorologia[meteorologia$NOM == "San Pedro", ])
+
+					</code>
+				</pre>
+            </div>
+            
+            <br><br>
+        </div>
+    </section>
+    
+    
+    
+    <!-- RUTA 3: SESIÓN 3 -->
+    <section id="view-sesion3" class="view">
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: Mediciones, gráficas, experimentos</h2>
+
+        <!-- Bloque 5 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 5 •</span>
+            <h3>Graficar nuestras mediciones</h3>
+            
+            
+            
+            
+            
+            <br><br>
+            
+            <h3>El Diseño de Pruebas Simples</h3>
+            <p><strong>Tu objetivo:</strong> Aprenderás a traducir las estacas, hilos y parcelas físicas que 
+            trazas en el terreno a una matriz organizada de datos en tu computadora, vinculando el Diseño de 
+            Pruebas o "Experimentos" simples con el análisis automatizado.</p>
+
+            <details class="observacion">
+                <summary>🔍 Entendiendo Factores vs Variables Respuesta</summary>
+                <p>En tus experimentos de campo, el <strong>Factor</strong> representa aquello que tú controlas 
+                o la causa (por ejemplo: el tipo de abono o la densidad de siembra). La <strong>Variable Respuesta</strong> 
+                es el efecto que observas, es decir, lo que la naturaleza responde y tú mides (los kilogramos cosechados o la altura 
+                del tallo). En ocasiones necesitaremos agrupar nuestras unidades experimentales en bloques, esto se hace cuando existe 
+                una clara fuente de variación que influye sobre los posibles resultados de nuestro experimento.
+                En caso de darse la formación de bloques, cada uno de los tratamientos deberá estar presente en cada bloque.
+                A esto lo llamaremos un DBA.</p>
+            </details>
+
+            <div class="alert-quote">
+                <strong>Simulación de un caso:</strong> Utilizarás una aplicación interactiva para observar cómo 
+                la variabilidad natural la pendiente (los bloques) puede camuflar u ocultar el verdadero efecto de tus abonos 
+                si no se aísla matemáticamente.
+            </div>
+
+            <h4>Reto Práctico: Organiza tu propia hoja de datos</h4>
+            <p>Antes de subir cualquier dato a un sistema automatizado, debes estructurarlo correctamente. Abre un archivo 
+            en blanco en Excel o en tu editor de texto y replica la estructura de filas de esta guía técnica:</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bloque</th>
+                            <th>Tratamiento</th>
+                            <th>Repeticion</th>
+                            <th>Muestra</th>
+                            <th>Rendimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Bloque I</td><td>Biofertilizante</td><td>1</td><td>1</td><td>4.25</td></tr>
+                        <tr><td>Bloque I</td><td>Biofertilizante</td><td>1</td><td>2</td><td>4.10</td></tr>
+                        <tr><td>Bloque I</td><td>Testigo</td><td>1</td><td>1</td><td>2.80</td></tr>
+                        <tr><td>Bloque II</td><td>Biofertilizante</td><td>1</td><td>1</td><td>3.95</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Bloque 6 -->
+        <div class="block-card">
+            <span class="block-badge">Bloque 6 • </span>
+            <h3>La Variable Binomial - Evaluación del Éxito</h3>
+            <p><strong>Tu objetivo:</strong> Aprenderás a medir numéricamente variables cualitativas de tipo "Sí o No". Esto 
+            te será de enorme utilidad para evaluar de manera rigurosa si un productor adoptó una tecnología agroecológica, o 
+            si un taller práctico cumplió con los estándares requeridos.</p>
+
+            <div class="alert-quote">
+                <strong>La Analogía del Higrómetro:</strong> Olvídate de fórmulas densas de probabilidad. Piensa en la prueba 
+                binomial como un juez matemático objetivo. Te dirá con total certeza si tus porcentajes de éxito superan una 
+                meta institucional o si el resultado se debió a una simple casualidad.
+            </div>
+
+            <h4>Caso de Estudio Práctico</h4>
+            <p>Imagina que evaluaste el nivel de satisfacción de <strong>40 asistentes</strong> a una demostración técnica en 
+            campo. Tu estándar institucional te exige que para considerar el taller como un éxito, la tasa de aceptación debe 
+            ser <strong>estrictamente mayor al 70% (0.70)</strong>.</p>
+            <p>Al revisar las boletas físicas obtienes: <strong>34 votos por el SÍ</strong> y <strong>6 votos por el NO</strong>.</p>
+
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code># 1. Define las variables que observaste en tus encuestas
+					votos_si <- 34
+					total_asistentes <- 40
+					meta_institucional <- 0.70
+
+					# Ejecuta la prueba binomial en tu consola
+					resultado_prueba <- binom.test(x = votos_si, n = total_asistentes, p = meta_institucional, alternative = "greater")
+					print(resultado_prueba)
+					</code>
+				</pre>
+            </div>
+
+            <details class="observacion">
+                <summary>📊 ¿Cómo interpretar la respuesta de tu Consola?</summary>
+                <p>Cuando corras este código, R te entregará un valor llamado <code>p-value = 0.017</code>.</p>
+                <p><strong>Tu regla de oro:</strong> El <em>p-value</em> funciona igual que el visor de un higrómetro digital en 
+                el suelo. Si marca <strong>menos de 0.05 (5%)</strong>, significa que hay "humedad o certeza estadística real". 
+                Como tu resultado (0.017) es menor que 0.05, has demostrado científicamente el éxito del taller, alcanzando una 
+                tasa de aceptación real del 85%.</p>
+            </details>
+
+            <h4>Ejercicios de Aplicación Autónoma (Trabajo Individual)</h4>
+            <p>Modifica los valores numéricos del código anterior directamente en tu RStudio para resolver y responder las 
+            siguientes problemáticas reales de campo:</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tu Escenario Práctico</th>
+                            <th>Éxito (x)</th>
+                            <th>Total (n)</th>
+                            <th>Meta Mínima (p)</th>
+                            <th>¿Tu p-value es < 0.05?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Caso A:</strong> Adopción de trampas de insectos. La meta regional es superar el 50% de 
+                            las fincas.</td>
+                            <td><code>votos_si &lt;- 18</code></td>
+                            <td><code>total_evaluados &lt;- 28</code></td>
+                            <td><code>p = 0.50</code></td>
+                            <td><em>(Corre el código y escribe tu conclusión)</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Caso B:</strong> Germinación de semillas nativas bajo sustrato orgánico. Tu meta de calidad 
+                            es superar el 80%.</td>
+                            <td><code>votos_si &lt;- 76</code></td>
+                            <td><code>total_evaluados &lt;- 90</code></td>
+                            <td><code>p = 0.80</code></td>
+                            <td><em>(Corre el código y escribe tu conclusión)</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+
+</div>
+
+<script>
+    function navigate(viewId) {
+        const views = document.querySelectorAll('.view');
+        views.forEach(view => view.classList.remove('active'));
+
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => link.classList.remove('active'));
+
+        document.getElementById('view-' + viewId).classList.add('active');
+        document.getElementById('link-' + viewId).classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    let currentFontSize = 18;
+    function adjustFontSize(delta) {
+        currentFontSize += delta;
+        if (currentFontSize < 14) currentFontSize = 14;
+        if (currentFontSize > 26) currentFontSize = 26;
+        document.documentElement.style.setProperty('--base-font-size', currentFontSize + 'px');
+    }
+
+    function copyCode(button) {
+        const pre = button.nextElementSibling;
+        const code = pre.querySelector('code').innerText;
+
+        navigator.clipboard.writeText(code).then(() => {
+            const originalText = button.innerText;
+            button.innerText = '¡Copiado!';
+            button.style.backgroundColor = '#27ae60';
+            button.style.color = 'white';
+
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.style.backgroundColor = '';
+                button.style.color = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Error al copiar el código: ', err);
+        });
+    }
+</script>
 
 </body>
-
 </html>
