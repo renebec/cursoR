@@ -969,19 +969,74 @@
     
     <!-- RUTA 3: SESIÓN 3 -->
     <section id="view-sesion3" class="view">
-        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: Mediciones, gráficas, experimentos</h2>
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: Representaciones gráficas</h2>
 
         <!-- Bloque 5 -->
         <div class="block-card">
             <span class="block-badge">Bloque 5 •</span>
-            <h3>Graficar nuestras mediciones</h3>
+            <h3>Graficar nuestras observaciones</h3>
             
+            Con R podemos hacer todo tipo de gráficas, desde las más sencillas como gráficas de barras o columnas, como
+            gráficas de dispersión o incluso gráficas interactivas como la que se muestra en la siguiente liga.<br><br>
             
+            <a href="https://renebec.github.io/panTime" target="_blank">PandemicGraph</a><br><br>
+            
+            Antes de avanzar recordaremos algunas cosas que hemos aprendido.
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						
+
+
+# ANALIZAREMOS UN NUEVO REPORTEDE DATOS METEOROLÓGICOS 
+meteorologia2 <- read.csv("datos_meteorologicos_asimetricos.csv")
+str(meteorologia2)
+summary(meteorologia2)
+
+#GENERAREMOS UNA TABLA DE FRECUENCIAS PARA
+#...SABER CUANTOS REGISTROS HAY DE CADA ESTACIÓN
+table(meteorologia2$NOM)
+
+
+#install.packages("dplyr")
+library(dplyr)
+
+
+meteorologia2 %>% group_by(NOM) %>% tally()
+
+#-----------------------------------------------------------
+#-----------------------------------------------------------
+
+#  --------     GRAFIQUEMOS     ---------------------------
+
+#install.packages("ggplot2")
+library(ggplot2)
+
+meteorologia2 %>% group_by(NOM) %>% tally() %>% 
+  ggplot(aes(x = NOM, y = n)) + 
+  geom_col(fill = "steelblue") + 
+  theme_minimal() + 
+  labs(title = "Conteo por NOM", x = "Nombre (NOM)", y = "Frecuencia") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# EXPLICACIÓN DE LO ANTERIOR, MISMO CÓDIGO PERO CON COMENTARIOS PARA CADA LINEA
+meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de valor "n"
+  ggplot(aes(x = NOM, y = n)) + # indico que quiero graficar en dos ejes y a cada eje le asigno su fuente de valores
+  geom_col(fill = "steelblue") + # elegir el color para colorear los objetos
+  theme_minimal() + # estilo minimalista
+  labs(title = "Conteo por NOM", x = "Nombre (NOM)", y = "Frecuencia") + # título y etiquetas
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))# inclinamos las etiquetas en eje x
+
+					</code>
+				</pre>
+            </div>
             
             
             
             <br><br>
-            
+<!--
             <h3>El Diseño de Pruebas Simples</h3>
             <p><strong>Tu objetivo:</strong> Aprenderás a traducir las estacas, hilos y parcelas físicas que 
             trazas en el terreno a una matriz organizada de datos en tu computadora, vinculando el Diseño de 
@@ -995,13 +1050,12 @@
                 del tallo). En ocasiones necesitaremos agrupar nuestras unidades experimentales en bloques, esto se hace cuando existe 
                 una clara fuente de variación que influye sobre los posibles resultados de nuestro experimento.
                 En caso de darse la formación de bloques, cada uno de los tratamientos deberá estar presente en cada bloque.
-                A esto lo llamaremos un DBA.</p>
+                </p>
             </details>
 
             <div class="alert-quote">
-                <strong>Simulación de un caso:</strong> Utilizarás una aplicación interactiva para observar cómo 
-                la variabilidad natural la pendiente (los bloques) puede camuflar u ocultar el verdadero efecto de tus abonos 
-                si no se aísla matemáticamente.
+                <strong>Simulación de un caso:</strong> Utilizarás una aplicación interactiva para observar 
+                el efecto de tus abonos.
             </div>
 
             <h4>Reto Práctico: Organiza tu propia hoja de datos</h4>
@@ -1029,7 +1083,7 @@
             </div>
         </div>
 
-        <!-- Bloque 6 -->
+
         <div class="block-card">
             <span class="block-badge">Bloque 6 • </span>
             <h3>La Variable Binomial - Evaluación del Éxito</h3>
@@ -1109,6 +1163,7 @@
                 </table>
             </div>
         </div>
+ -->
     </section>
     
     
