@@ -1045,6 +1045,24 @@ for (i in estaciones) {
 }
 
 
+# -----------------------------------------------------------
+#---------------- las funciones summarise(), min(), max(), mean(), sd() ----------------------------
+
+meteorologia %>% 
+  filter(meteorologia$NOM=="San Pedro") %>% summarise(mean(T))
+
+meteorologia %>% 
+  filter(meteorologia$NOM=="San Pedro") %>% summarise(sd(T))
+
+# Podemos usar funciones como mean() o sd() de manera simple y directa sobre 
+#...pequeños conjuntos de datos
+
+# EJemplo:
+estaturas <-  c(165, 158, 170, 169, 181)
+mean(estaturas)
+sd(estaturas)
+
+
 #-----------------------------------------------------------
 #-----------------------------------------------------------
 
@@ -1072,11 +1090,30 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
   #--------------------- histograma -----------------------------------------------------------
   # Construyamos un histograma con los datos de T de una estación
   
-  meteorologia2 %>%
+  meteorologia %>%
   filter(NOM %in% c("San Pedro")) %>%
   ggplot(aes(x = T)) +
-  # alpha controla la transparencia (0 = invisible, 1 = opaco)
   geom_histogram(position = "identity", bins = 20, color = "white", fill="purple") +
+  # Personalización de etiquetas
+  labs(
+    title = "Histograma de Temperaturas",
+    subtitle = "Estación Sn Pedro",
+    x = "Temperatura (°C)",
+    y = "Frecuencia",
+    fill = "Estación"
+  ) +
+  theme_minimal()
+  
+  
+  # Comparar 2 histogramas
+  estaciones_interes <- c("San Pedro", "Los Olivos")
+  
+  # 2. Filtrar y graficar
+  meteorologia %>%
+  filter(NOM %in% estaciones_interes) %>%
+  ggplot(aes(x = T, fill = NOM)) +
+  # alpha controla la transparencia (0 = invisible, 1 = opaco)
+  geom_histogram(position = "identity", alpha = 0.5, bins = 20, color = "white") +
   # Personalización de etiquetas
   labs(
     title = "Comparación de Temperaturas",
@@ -1085,14 +1122,13 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
     fill = "Estación"
   ) +
   theme_minimal()
-  
 
 					</code>
 				</pre>
             </div>
             
-            Otro tipo de gráfico muy necesario en la exploración inicial de cualquier muestreo o
-            prueba piloto, es el diagrama de dispersión. A continuación aprenderemos a visualizar
+            Otro tipo de gráfico muy necesario en la exploración inicial de muestreos o
+            pruebas piloto, es el diagrama de dispersión. A continuación aprenderemos a visualizar
             gráficamente dos conjuntos de datos para saber su nivel de correlación.
     
             <div class="code-container">
