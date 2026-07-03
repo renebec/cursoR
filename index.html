@@ -1105,23 +1105,24 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
   theme_minimal()
   
   
-  # Comparar 2 histogramas
-  estaciones_interes <- c("San Pedro", "Los Olivos")
-  
-  # 2. Filtrar y graficar
-  meteorologia2 %>%
+# ------Vamos a comparar los histogramas de la variable T de 3 estaciones
+estaciones_interes <- c("San Pedro", "Los Olivos", "La Estancia")
+
+meteorologia2 %>%
   filter(NOM %in% estaciones_interes) %>%
   ggplot(aes(x = T, fill = NOM)) +
-  # alpha controla la transparencia (0 = invisible, 1 = opaco)
-  geom_histogram(position = "identity", alpha = 0.5, bins = 20, color = "white") +
-  # Personalización de etiquetas
+  geom_histogram(position = "identity", alpha = 0.5, bins = 25, color = "white") +
   labs(
     title = "Comparación de Temperaturas",
     x = "Temperatura (°C)",
     y = "Frecuencia",
     fill = "Estación"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  # --- AQUÍ AGREGAS LOS COLORES MANUALES ---
+  scale_fill_manual(values = c("San Pedro" = "#FF5733", 
+                               "La Estancia" = "#FAC014", 
+                               "Los Olivos" = "#2ECC71"))
 
 					</code>
 				</pre>
