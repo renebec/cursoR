@@ -977,8 +977,13 @@
             <h3>Graficar nuestras observaciones</h3>
             
             Con R podemos hacer todo tipo de gráficas, desde las más sencillas como gráficas de barras o columnas, como
-            gráficas de dispersión o incluso gráficas interactivas como la que se muestra en la siguiente liga.<br><br>
+            gráficas de dispersión o incluso gráficas interactivas. Te comparto algunos ejemplos:<br><br>
             
+            
+            
+            <a href="https://renebec.github.io/M1S1-2TA-graph" target="_blank">rendimientoAprendizaje</a><br>
+            <a href="https://renebec.github.io/chilli_response" target="_blank">chilliResponse</a><br>
+            <a href="https://renebec.github.io/sismosDGETAyCM" target="_blank">cbtasSismos</a><br>
             <a href="https://renebec.github.io/panTime" target="_blank">PandemicGraph</a><br><br>
             
             Antes de avanzar recordaremos algunas cosas que hemos aprendido.
@@ -1033,9 +1038,167 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
 				</pre>
             </div>
             
-            
+            Otro tipo de gráfico muy necesario en la exploración inicial de cualquier muestreo o
+            prueba piloto, es el diagrama de dispersión. A continuación aprenderemos a visualizar
+            gráficamente dos conjuntos de datos para saber su nivel de correlación.
+    
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						
+ingreso <- read.csv("datos_correlacion.csv")
+str(ingreso)
+summary(ingreso)
+
+ingreso %>% 
+  ggplot(aes(x = INGRESO_MENSUAL, y = VALOR_VIVIENDA_ACTUAL)) +
+  geom_point(color = "red", size = 3, alpha = 0.5) +
+  labs(
+    title = "Datos de dos variables correlacionadas",
+    x = "Ingreso mensual",
+    y = "Valor de vivienda"
+  ) 
+  
+#------------------------------------------------------------------
+# Seguramente te gustaría mostrar en tu gráfica una recta de regresión y su ecuación, así
+#   como alguna medida del nivel de correlación.
+
+library(ggpmisc)
+
+ggplot(ingreso, aes(x = INGRESO_MENSUAL, y = VALOR_VIVIENDA_ACTUAL)) +
+  geom_point(color = "red", size = 3, alpha = 0.7) +
+  geom_smooth(method = "lm", color = "darkblue", se = FALSE) +
+  
+  # CAPA NUEVA 1: Pone la ecuación de la recta (y = a + bx)
+  stat_poly_eq(aes(label = paste(after_stat(eq.label), sep = "~~~")),
+               formula = y ~ x, parse = TRUE, label.x = "left", label.y = "top") +
+  
+  # CAPA NUEVA 2: Pone el valor de R^2 justo abajo de la ecuación
+  stat_poly_eq(aes(label = paste(after_stat(rr.label), sep = "~~~")),
+               formula = y ~ x, parse = TRUE, label.x = "left", label.y = 0.9) +
+  
+  labs(
+    title = "Relación entre Ingreso Mensual y Valor de la Vivienda",
+    subtitle = "Modelo de Regresión Lineal",
+    x = "Ingreso Mensual ($)",
+    y = "Valor de la Vivienda Actual ($)"
+  ) +
+  theme_minimal()
+
+					</code>
+				</pre>
+            </div>
             
             <br><br>
+            
+            La capacidad gráfica de R puede aplicarse en el campo de la pedagogía. Les comparto
+            el código para una aplicación local de R útil para mostrar el comportamiento de
+            funciones básicas de una clase de matemáticas.
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						
+library(shiny)
+library(ggplot2)
+
+# 1. Interfaz de Usuario (UI)
+ui <- fluidPage(
+  titlePanel("Laboratorio Interactivo de Funciones"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      h4("Parámetros de la Función"),
+      # Selección de exponente
+      selectInput("exponente", "Exponente (n):",
+                  choices = list("Lineal (n=1)" = 1, "Cuadrática (n=2)" = 2, 
+                                 "Cúbica (n=3)" = 3, "Cuarta (n=4)" = 4,
+                                 "Quinta (n=5)" = 5, 
+                                 "Sexta (n=6)" = 6),  selected = 1),
+      
+      # Slider para m (incrementos de 0.5)
+      sliderInput("m", "Valor de m (Pendiente/Coeficiente):", 
+                  min = -10, max = 10, value = 1, step = 0.5),
+      
+      # Casilla para el intercepto
+      numericInput("b", "Valor de b (Intercepto):", value = 0),
+      
+      hr(),
+      h4("Ajustes de Visualización"),
+      
+      # Control del Dominio (Eje X)
+      sliderInput("rangoX", "Dominio (Eje X):", 
+                  min = -5, max = 5, value = c(-10, 10)),
+      
+      # Control del Contradominio (Eje Y)
+      sliderInput("rangoY", "Rango de vista (Eje Y):", 
+                  min = -80, max = 80, value = c(-50, 50))
+    ),
+    
+    mainPanel(
+      # Salida de la gráfica
+      plotOutput("graficaFuncion", height = "600px")
+    )
+  )
+)
+
+# 2. Servidor (Server)
+server <- function(input, output) {
+  
+  output$graficaFuncion <- renderPlot({
+    # Forzar carga de librería dentro del render para evitar errores en Cloud
+    library(ggplot2)
+    
+    # Parámetros
+    n <- as.numeric(input$exponente)
+    m <- input$m
+    b <- input$b
+    minX <- input$rangoX[1]
+    maxX <- input$rangoX[2]
+    minY <- input$rangoY[1]
+    maxY <- input$rangoY[2]
+    
+    # Crear datos basados en el dominio seleccionado
+    datos <- data.frame(x = seq(minX, maxX, length.out = 500))
+    datos$y <- m * (datos$x ^ n) + b
+    
+    # CREAR LA ECUACIÓN MATEMÁTICA (Tipografía profesional)
+    # bquote permite usar exponentes reales y símbolos matemáticos
+    ecuacion <- bquote(italic(y) == .(m) * italic(x)^.(n) + .(b))
+    
+    # Graficar
+    ggplot(datos, aes(x = x, y = y)) +
+      geom_line(color = "#2c3e50", size = 1.5) +
+      # Ejes de referencia
+      geom_hline(yintercept = 0, color = "black", alpha = 0.3) +
+      geom_vline(xintercept = 0, color = "black", alpha = 0.3) +
+      # Control de zoom (Contradominio)
+      coord_cartesian(xlim = c(minX, maxX), ylim = c(minY, maxY)) +
+      theme_minimal() +
+      labs(
+        title = ecuacion, # Aquí se inserta la ecuación con formato
+        x = "Dominio (x)",
+        y = "Contradominio (y)"
+      ) +
+      theme(
+        # 'serif' le da ese toque de libro de matemáticas clásico
+        text = element_text(family = "serif"),
+        plot.title = element_text(size = 25, color = "#e67e22", hjust = 0.5),
+        axis.title = element_text(size = 14, face = "italic"),
+        panel.grid.major = element_line(color = "#ecf0f1"),
+        panel.grid.minor = element_blank()
+      )
+  })
+}
+
+# 3. Lanzar
+shinyApp(ui = ui, server = server)
+
+					</code>
+				</pre>
+            </div>
 <!--
             <h3>El Diseño de Pruebas Simples</h3>
             <p><strong>Tu objetivo:</strong> Aprenderás a traducir las estacas, hilos y parcelas físicas que 
