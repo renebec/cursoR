@@ -1021,9 +1021,9 @@ meteorologia2 %>% group_by(NOM) %>% tally()
 # Ahora obtendremos el resumen de estadísticas de
 #...una estación específica usando la función filter()-----------
 
-meteorologia %>% filter(meteorologia2$NOM=="San Pedro") %>% summary()
+meteorologia2 %>% filter(meteorologia2$NOM=="San Pedro") %>% summary()
 
-meteorologia %>% filter(meteorologia2$NOM=="Los Olivos") %>% summary()
+meteorologia2 %>% filter(meteorologia2$NOM=="Los Olivos") %>% summary()
 
 
 # -----BUCLE for ----------------------------------------------------
@@ -1067,6 +1067,25 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
   theme_minimal() + # estilo minimalista
   labs(title = "Conteo por NOM", x = "Nombre (NOM)", y = "Frecuencia") + # título y etiquetas
   theme(axis.text.x = element_text(angle = 45, hjust = 1))# inclinamos las etiquetas en eje x
+  
+  #------------------------------------------------------------------------------------------
+  #--------------------- histograma -----------------------------------------------------------
+  # Construyamos un histograma con los datos de T de una estación
+  
+  meteorologia2 %>%
+  filter(NOM %in% c("San Pedro")) %>%
+  ggplot(aes(x = T)) +
+  # alpha controla la transparencia (0 = invisible, 1 = opaco)
+  geom_histogram(position = "identity", bins = 20, color = "white", fill="purple") +
+  # Personalización de etiquetas
+  labs(
+    title = "Comparación de Temperaturas",
+    x = "Temperatura (°C)",
+    y = "Frecuencia",
+    fill = "Estación"
+  ) +
+  theme_minimal()
+  
 
 					</code>
 				</pre>
