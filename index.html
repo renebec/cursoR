@@ -986,7 +986,9 @@
             <a href="https://renebec.github.io/sismosDGETAyCM" target="_blank">cbtasSismos</a><br>
             <a href="https://renebec.github.io/panTime" target="_blank">PandemicGraph</a><br><br>
             
-            Antes de avanzar recordaremos algunas cosas que hemos aprendido.
+            Aprenderemos algunas funciones nuevas de R y del paquete dplyr. Posteriormente
+            aprenderemos a construir un loop sencillo para ejecutar acciones de manera iterativa y, por último
+            usaremos el paquete ggplot2 para generar algunas gráficas útiles en la exploración de datos.
             
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
@@ -996,20 +998,52 @@
 
 
 # ANALIZAREMOS UN NUEVO REPORTEDE DATOS METEOROLÓGICOS 
-meteorologia2 <- read.csv("datos_meteorologicos_asimetricos.csv")
+url_datos <- "https://cursoclasemx.onrender.com/static/datos_meteorologicos_asimetricos.csv"
+
+meteorologia2 <- read.csv(url_datos)
+
 str(meteorologia2)
 summary(meteorologia2)
 
 #GENERAREMOS UNA TABLA DE FRECUENCIAS PARA
 #...SABER CUANTOS REGISTROS HAY DE CADA ESTACIÓN
-table(meteorologia2$NOM)
+table(meteorologia22$NOM)
 
 
 #install.packages("dplyr")
 library(dplyr)
 
+# Haremos el conteo de registros para cada estación usando
+#... las funciones group_by() y tally() -------------------
 
 meteorologia2 %>% group_by(NOM) %>% tally()
+
+# Ahora obtendremos el resumen de estadísticas de
+#...una estación específica usando la función filter()-----------
+
+meteorologia %>% filter(meteorologia2$NOM=="San Pedro") %>% summary()
+
+meteorologia %>% filter(meteorologia2$NOM=="Los Olivos") %>% summary()
+
+
+# -----BUCLE for ----------------------------------------------------
+# Generaremos un loop de tipo "for" para obtner
+#...el resumen de estadísticas de cada una de las
+#...estaciones que contenga mi archivo csv
+
+# 1. Guardamos las estaciones únicas en una variable
+estaciones <- unique(meteorologia2$NOM)
+
+# 2. Iteramos sobre cada estación
+for (i in estaciones) {
+  print(paste("=== Resumen para:", i, "===")) # Para saber de qué estación es cada resumen
+  
+  meteorologia2 %>% 
+    filter(NOM == i) %>% 
+    summary() %>% 
+    print() # Es necesario usar print() dentro de un for para que se muestre en consola
+}
+
 
 #-----------------------------------------------------------
 #-----------------------------------------------------------
