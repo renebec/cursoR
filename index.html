@@ -1048,10 +1048,10 @@ for (i in estaciones) {
 # -----------------------------------------------------------
 #---------------- las funciones summarise(), min(), max(), mean(), sd() ----------------------------
 
-meteorologia %>% 
+meteorologia2 %>% 
   filter(meteorologia$NOM=="San Pedro") %>% summarise(mean(T))
 
-meteorologia %>% 
+meteorologia2 %>% 
   filter(meteorologia$NOM=="San Pedro") %>% summarise(sd(T))
 
 # Podemos usar funciones como mean() o sd() de manera simple y directa sobre 
@@ -1090,7 +1090,7 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
   #--------------------- histograma -----------------------------------------------------------
   # Construyamos un histograma con los datos de T de una estación
   
-  meteorologia %>%
+  meteorologia2 %>%
   filter(NOM %in% c("San Pedro")) %>%
   ggplot(aes(x = T)) +
   geom_histogram(position = "identity", bins = 20, color = "white", fill="purple") +
@@ -1109,7 +1109,7 @@ meteorologia2 %>% group_by(NOM) %>% tally() %>% #tally me generará un conteo de
   estaciones_interes <- c("San Pedro", "Los Olivos")
   
   # 2. Filtrar y graficar
-  meteorologia %>%
+  meteorologia2 %>%
   filter(NOM %in% estaciones_interes) %>%
   ggplot(aes(x = T, fill = NOM)) +
   # alpha controla la transparencia (0 = invisible, 1 = opaco)
