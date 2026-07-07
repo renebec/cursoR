@@ -599,36 +599,37 @@
             
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
-                <pre><code># 1. Operaciones básicas
+                <pre><code>
+# 1. Operaciones básicas
                 
 
-                # Suma
-				5 + 7  
+# Suma
+5 + 7  
 				
-				# Producto
-				5 * 5
+# Producto
+5 * 5
 				
-				# Potencia n
-				# n = 5
-				2^5
+# Potencia n
+# n = 5
+2^5
 				
-				# Raiz n
-				# n = 5
-				32^(1/5)
+# Raiz n
+# n = 5
+32^(1/5)
 				
-				# Raíz n 
-				# n = 2 (raíz cuadrada)
-				81^(1/2)
+# Raíz n 
+# n = 2 (raíz cuadrada)
+81^(1/2)
 				
-				# Raíz cuadrada
-				sqrt(81)  
+# Raíz cuadrada
+sqrt(81)  
 				
-				# Logaritmo natural
-				log(9)
+# Logaritmo natural
+log(9)
 
-				# NÚMEROS ESPECIALES
-				pi
-				exp(1)	
+# NÚMEROS ESPECIALES
+pi
+exp(1)	
 				
             </div>
             
@@ -674,71 +675,71 @@
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code>
-						# 1. Usa R como tu supercalculadora de campo
-						x <- 20  
-						y <- 5  
+# 1. Usa R como tu supercalculadora de campo
+x <- 20  
+y <- 5  
 						
-						# NOTA: muestra el contenido que guardaste en los objetos "x" y "y"
-						print(x)
-						y
+# NOTA: muestra el contenido que guardaste en los objetos "x" y "y"
+print(x)
+y
 						
-
-						# Calcular (x + y) guardando el resultado en una "caja" llamada z
-						z <- x + y
+# Calcular (x + y) guardando el resultado en una "caja" llamada z
+z <- x + y
 						
-						# Ahora mostraremos el resultado que quedó guardado en el "contenedor" llamada z
-						print(z)
+# Ahora mostraremos el resultado que quedó guardado en el "contenedor" llamada z
+print(z)
 						
-						# Entonces decimos que "x", "y" y "z" son VARIABLES
+# Entonces decimos que "x", "y" y "z" son VARIABLES
 				
+					
+				
+				
+				
+#--------------------------------
+				
+# Ejemplo
+#Se tiene una muestra de un tronco de <i>Pinus patula</i>. El diámetro es 
+#...de 62 cm y tiene una longitud (o altura) de 14 metros. La 
+#...densidad promedio de la masa seca de <i>Pinus patula</i> es 
+#...aproximadamente de 420 gr/m<sup>3</sup> y,
+#...aproximadamente el 48.5% de esa masa es carbono (C). <br>
+#¿Cuál la cantidad de carbono secuestrado en la muestra?
+				
+#-------------------------------
+# RESOLVAMOS:
+				
+radio <- 0.31
+alt <- 14
+				
+# CALCULEMOS EL VOLUMEN
+vol <- pi * (radio^2) * alt
+				
+# COMO YA SABEMOS EL VOLUMEN Y
+#...CONOCEMOS LA DENSIDAD, ENTONCES
+#...PODEMOS CALCULAR EL PESO DEL TRONCO
+				
+gramos_madera <- 420 * vol
+				
+# CALCULAREMOS LOS GRAMOS DE CARBONO CONTENIDOS EN LA MUESTRA
+carb_proporcion <- 0.485
+carbono <- gramos_madera * carb_proporcion
+
+# PESO SECO DE NUESTRA MUESTRA (gr)
+gramos_madera
+				
+# GRAMOS DE CARBONO CONTENIDO EN LA MUESTRA
+carbono
+				
+#----------------------------------
+				
+# Si se tiene un área de exclusión de <i>Pinus patula</i> donde 
+#...hay 21,350 individuos con un diámetro promedio de 
+#...45 cm y la altura promedio es de 15.35 m.
+# ¿Cuántos kg de carbono se encuentran secuestrados en 
+#...dicha área de exclusión?
+				
+#-------------------------------
 					</code>
-				
-				
-				
-				#--------------------------------
-				
-				# Ejemplo
-				#Se tiene una muestra de un tronco de <i>Pinus patula</i>. El diámetro es 
-				#...de 62 cm y tiene una longitud (o altura) de 14 metros. La 
-				#...densidad promedio de la masa seca de <i>Pinus patula</i> es 
-				#...aproximadamente de 420 gr/m<sup>3</sup> y,
-				#...aproximadamente el 48.5% de esa masa es carbono (C). <br>
-				#¿Cuál la cantidad de carbono secuestrado en la muestra?
-				
-				#-------------------------------
-				# RESOLVAMOS:
-				
-				radio <- 0.31
-				alt <- 14
-				
-				# CALCULEMOS EL VOLUMEN
-				vol <- pi * (radio^2) * alt
-				
-				# COMO YA SABEMOS EL VOLUMEN Y
-				#...CONOCEMOS LA DENSIDAD, ENTONCES
-				#...PODEMOS CALCULAR EL PESO DEL TRONCO
-				
-				gramos_madera <- 420 * vol
-				
-				# CALCULAREMOS LOS GRAMOS DE CARBONO CONTENIDOS EN LA MUESTRA
-				carb_proporcion <- 0.485
-				carbono <- gramos_madera * carb_proporcion
-
-				# PESO SECO DE NUESTRA MUESTRA (gr)
-				gramos_madera
-				
-				# GRAMOS DE CARBONO CONTENIDO EN LA MUESTRA
-				carbono
-				
-				#----------------------------------
-				
-				# Si se tiene un área de exclusión de <i>Pinus patula</i> donde 
-				#...hay 21,350 individuos con un diámetro promedio de 
-				#...45 cm y la altura promedio es de 15.35 m.
-				# ¿Cuántos kg de carbono se encuentran secuestrados en 
-				#...dicha área de exclusión?
-				
-				#-------------------------------
 				</pre>
 		
             </div>
@@ -749,21 +750,21 @@
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code># 1. En un terreno con árboles de durazno se cosecharon 
-					#...632 kg de fruta. El terreno cuenta con un total de 
-					#...17 árboles sembrados. 		
-					#¿Cuál fue el rendimiento promedio por árbol?
+#...632 kg de fruta. El terreno cuenta con un total de 
+#...17 árboles sembrados. 		
+#¿Cuál fue el rendimiento promedio por árbol?
 					
-					# PASO A PASO
-					#1. Crea un objeto llamado "cosecha" y guarda ahí la cantidad de kg cosechada.
-					#2. Crea un objeto llamado "arboles_num" y guarda ahí la cantidad de árboles que hay en el terreno.
-					#3. Crea un objeto llamado "rendimiento" y guarda ahí el cociente obtenido al dividir "cosecha" entre "arboles_num"
-					#4. Muestra el valor que se guardó en el objeto "rendimiento"
-                
+# PASO A PASO
+#1. Crea un objeto llamado "cosecha" y guarda ahí la cantidad de kg cosechada.
+#2. Crea un objeto llamado "arboles_num" y guarda ahí la cantidad de árboles que hay en el terreno.
+#3. Crea un objeto llamado "rendimiento" y guarda ahí el cociente obtenido al dividir "cosecha" entre "arboles_num"
+#4. Muestra el valor que se guardó en el objeto "rendimiento"
+					</code>
 				</pre>
             </div>
 
             
-        </div>
+        
 
         <!-- Bloque 2 -->
         <div class="block-card">
@@ -805,42 +806,43 @@
 
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
-                <pre><code># TU TURNO: Captura la tabla anterior en tu consola de R
-					planta <- c(1, 2, 3, 4, 5)
-					variedad <- c("Criolla", "Criolla", "Mejorada", "Mejorada", "Testigo")
-					peso_gr <- c(185, 192, 210, 225, 150)
+                <pre>
+					<code># TU TURNO: Captura la tabla anterior en tu consola de R
+planta <- c(1, 2, 3, 4, 5)
+variedad <- c("Criolla", "Criolla", "Mejorada", "Mejorada", "Testigo")
+peso_gr <- c(185, 192, 210, 225, 150)
 
-					# Agrupa tus vectores en un contenedor de datos (Data Frame)
-					mis_datos <- data.frame(planta, variedad, peso_gr)
+# Agrupa tus vectores en un contenedor de datos (Data Frame)
+mis_datos <- data.frame(planta, variedad, peso_gr)
 
-					# Inspecciona la estructura de lo que acabas de crear
-					str(mis_datos)
-					summary(mis_datos)
+# Inspecciona la estructura de lo que acabas de crear
+str(mis_datos)
+summary(mis_datos)
 					
-					# Mostraremos el contenido de lo que acabas de crear
-					mis_datos
+# Mostraremos el contenido de lo que acabas de crear
+mis_datos
 					
 					
-					# PLUS
-					# Exportaremos nuestro Data Frame a excel
-					# Para esto, debemos instalar primero un paquete de R llamado "writexl"
-					# Para instalar cualquier paquete usamos la función "install.packages()"
+# PLUS
+# Exportaremos nuestro Data Frame a excel
+# Para esto, debemos instalar primero un paquete de R llamado "writexl"
+# Para instalar cualquier paquete usamos la función "install.packages()"
 					
-					install.packages("writexl")
+install.packages("writexl")
 					
-					# Una vez instalado el paquete deberemos llamarlo con
-					# ...la función "library()".
+# Una vez instalado el paquete deberemos llamarlo con
+# ...la función "library()".
 					
-					library(writexl)
+library(writexl)
 					
-					#Hemos activado el paquete "writexl"
+#Hemos activado el paquete "writexl"
 
-					# 2. Exportar el DataFrame a Excel con la instrucción "write_xlsx"
-					write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
+# 2. Exportar el DataFrame a Excel con la instrucción "write_xlsx"
+write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
 					
-					# Así hemos creado un archivo xlsx cuyo contenido corresponde al objeto "mis_datos" y 
-					#...a dicho archivo excel le hemos dado como nombre ""mis_datos_excel.xlsx".
-					# Este archivo excel estará guardado en la misma carpeta donde se ubica tu proyecto R
+# Así hemos creado un archivo xlsx cuyo contenido corresponde al objeto "mis_datos" y 
+#...a dicho archivo excel le hemos dado como nombre ""mis_datos_excel.xlsx".
+# Este archivo excel estará guardado en la misma carpeta donde se ubica tu proyecto R
 					
 					</code>
 				</pre>
@@ -869,13 +871,13 @@
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code>
-						# Primero instalaremos "dplyr"
+# Primero instalaremos "dplyr"
 						
-						install.packages("dplyr")
+install.packages("dplyr")
 						
-						# Ahora activaremos el paquete instaladoo usando la función library()
+# Ahora activaremos el paquete instaladoo usando la función library()
 						
-						library(dplyr)
+library(dplyr)
 
 					</code>
 				</pre>
@@ -902,14 +904,14 @@
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code>
-						x <- 5
-						y <- 3
+x <- 5
+y <- 3
 						
-						# Realiza lo siguiente:
-						# suma x con y, al resultado extraerle la raíz cuadrada, y de ese
-						# último resultado obtén su logaritmo natural.
+# Realiza lo siguiente:
+# suma x con y, al resultado extraerle la raíz cuadrada, y de ese
+# último resultado obtén su logaritmo natural.
 						
-						¿Cómo sería tu aproximación para resolver esta situación?
+#¿Cómo sería tu aproximación para resolver esta situación?
 
 					</code>
 				</pre>
@@ -942,22 +944,22 @@
 						
 						
 						
-						# le indicaremos a R donde se encuentran nuestros datos
+# le indicaremos a R donde se encuentran nuestros datos
 									
-						meteorologia <- read.csv("datos_meteorologicos.csv")
+meteorologia <- read.csv("datos_meteorologicos.csv")
 
-						# Ahora exploraremos nuestros datos.
-						# Primero revelaremos cuál es la estructura del objeto "meteorologia"
-						str(meteorologia)
+# Ahora exploraremos nuestros datos.
+# Primero revelaremos cuál es la estructura del objeto "meteorologia"
+str(meteorologia)
 						
-						# ¿Cuántos registros observas que tiene el objeto "meteorologia"?
+# ¿Cuántos registros observas que tiene el objeto "meteorologia"?
 						
-						# Ahora obtendremos estadísticas rápidas de la información contenida en
-						#... el objeto "meteorologia"
-						summary(meteorologia)
+# Ahora obtendremos estadísticas rápidas de la información contenida en
+#... el objeto "meteorologia"
+summary(meteorologia)
 
-						table(meteorologia$NOM)
-						summary(meteorologia[meteorologia$NOM == "San Pedro", ])
+table(meteorologia$NOM)
+summary(meteorologia[meteorologia$NOM == "San Pedro", ])
 
 					</code>
 				</pre>
