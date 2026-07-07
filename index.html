@@ -861,29 +861,10 @@ write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
         <!-- Bloque 3 -->
         <div class="block-card">
             <span class="block-badge">Bloque 3 •</span>
-             <h3>Algunas funciones básicas y el paquete dplyr</h3>
+             <h3>Haremos una recopilación de algunas funciones básicas vistas</h3>
             <p>
-				Iinstalaremos un paquete de R llamado "dplyr" el cual utilizaremos para simplificar el
-				lenguaje de nuestro código y así poder construir "cadenas" de instrucciones anidadas.
-            </p>
-            
-            <div class="code-container">
-                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
-                <pre>
-					<code>
-# Primero instalaremos "dplyr"
-						
-install.packages("dplyr")
-						
-# Ahora activaremos el paquete instaladoo usando la función library()
-						
-library(dplyr)
-
-					</code>
-				</pre>
-            </div>
-            
-            Ya has conocido algunas <b>funciones</b> fundamentales de R, como por ejemplo:
+				Revisaremos el uso de algunas funciones básicas. Ya has conocido algunas <b>funciones</b> fundamentales de R, como por ejemplo:
+			</p>
             <ul>
 				<li>str()</li>
 				<li>summary()</li>
@@ -891,9 +872,7 @@ library(dplyr)
 				<li>library()</li>
             </ul>
             
-            En esta sección conoceremos algunas otras funciones como <b>table()</b>, <b>tally()</b> y también <b>group_by()</b>.<br><br>
-            En ocasiones necesitaremos
-            realizar cadenas de operaciones y ejecutar funciones de forma anidada y secuenciada, dplyr nos permite hacer eso.
+            Más adelante introduciremos otras funciones de utilidad.<br><br>
             <br><br>
             
             Ejemplo:<br>
@@ -958,6 +937,7 @@ str(meteorologia)
 #... el objeto "meteorologia"
 summary(meteorologia)
 
+	# ----La función table() nos genera una tabla de frecuencias sobre algún campo categórico
 table(meteorologia$NOM)
 summary(meteorologia[meteorologia$NOM == "San Pedro", ])
 
@@ -973,7 +953,7 @@ summary(meteorologia[meteorologia$NOM == "San Pedro", ])
     
     <!-- RUTA 3: SESIÓN 3 -->
     <section id="view-sesion3" class="view">
-        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: Representaciones gráficas</h2>
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: dplyr y ggplot2</h2>
 
         <!-- Bloque 5 -->
         <div class="block-card">
@@ -993,6 +973,10 @@ summary(meteorologia[meteorologia$NOM == "San Pedro", ])
             Aprenderemos algunas funciones nuevas de R y del paquete dplyr. Posteriormente
             aprenderemos a construir un loop sencillo para ejecutar acciones de manera iterativa y, por último
             usaremos el paquete ggplot2 para generar algunas gráficas útiles en la exploración de datos.
+			<br><br>
+
+			En ocasiones necesitaremos
+            realizar cadenas de operaciones y ejecutar funciones de forma anidada y secuenciada, dplyr nos permite hacer eso.
             
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
@@ -1013,6 +997,8 @@ summary(meteorologia2)
 #...SABER CUANTOS REGISTROS HAY DE CADA ESTACIÓN
 table(meteorologia22$NOM)
 
+
+# Instalaremos "dplyr"
 
 #install.packages("dplyr")
 library(dplyr)
