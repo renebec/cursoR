@@ -489,7 +489,7 @@
 			* IDE: Entorno de Desarrollo Integrado
 		</div>	
 			Al tratarse de software libre basta con descargar ambos paquetes y mediante el instalador seguir los pasos que ahí se indican.
-			Te dejo las ligas para que puedas descargar ambos paquetes. Sigue las instrucciones de tu profesor para hacer la instalación.
+			Te dejo las ligas para que puedas descargar ambos paquetes. Sigue las instrucciones del tu profesor para hacer la instalación.
 
         <br><br>
         
@@ -523,7 +523,7 @@
 						<li>¿Cuál es el lapso de registro de datos con que cuenta el archivo?</li>
                     </ol>
                     <br>
-                    <b>Puedes descargar el archivo en la siguiente liga</b>: <br>
+                    <b>Puedes descargar al archivo en la siguiente liga</b>: <br>
                     <a href="https://cursoclasemx.onrender.com/descargar/datos_meteorologicos.csv">datos_meteorologicos.csv</a>
                     <br><br>
                     <!--
@@ -546,7 +546,7 @@
             <span class="block-badge">Bloque 1 •</span>
            
             
-       
+            
              <h3>Introducción Amigable: R como Supercalculadora</h3>
             
             <div style="background-color:white; color:#335533;padding:15px;">
@@ -561,8 +561,7 @@
             </div>
             
              <details class="consejo">
-			
-                
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
                 <summary>💡 Tip de Aprendizaje: Limpia tu consola</summary>
                 <p>Llegará el momento en que tu consola estará saturada de líneas y números. Para limpiarla usa la siguiente combianción de teclas:</p>
                 &emsp;&emsp; <b>Ctrl</b> + <b>L</b>
@@ -588,7 +587,7 @@
             <br><br>
             
             <details class="consejo">
-                
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
                 <summary>💡 Tip de aprendizaje: Agregar comentarios en tu código</summary>
                 <p>Cada línea de código es una instrucción que el programa ejecutará.
                 Todo lo que escribas a la derecha de un signo  de gato (<b>#</b>) será interpretado como un comentario
@@ -600,37 +599,36 @@
             
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
-                <pre><code>
-# 1. Operaciones básicas
+                <pre><code># 1. Operaciones básicas
                 
 
-# Suma
-5 + 7  
+                # Suma
+				5 + 7  
 				
-# Producto
-5 * 5
+				# Producto
+				5 * 5
 				
-# Potencia n
-# n = 5
-2^5
+				# Potencia n
+				# n = 5
+				2^5
 				
-# Raiz n
-# n = 5
-32^(1/5)
+				# Raiz n
+				# n = 5
+				32^(1/5)
 				
-# Raíz n 
-# n = 2 (raíz cuadrada)
-81^(1/2)
+				# Raíz n 
+				# n = 2 (raíz cuadrada)
+				81^(1/2)
 				
-# Raíz cuadrada
-sqrt(81)  
+				# Raíz cuadrada
+				sqrt(81)  
 				
-# Logaritmo natural
-log(9)
+				# Logaritmo natural
+				log(9)
 
-# NÚMEROS ESPECIALES
-pi
-exp(1)	
+				# NÚMEROS ESPECIALES
+				pi
+				exp(1)	
 				
             </div>
             
@@ -654,7 +652,7 @@ exp(1)
             </ul>
 
             <details class="observacion">
-                
+                <!-- Convertido en una explicación directa del concepto -->
                 <summary>🔍 Descubre cómo funcionan las Variables y Contenedores</summary>
                 <p>Para entender el operador de asignación (<code>&lt;-</code>), imagina una caja de madera para cosechar manzanas. 
                 Si escribes <code>caja_A &lt;- 25</code>, estás rotulando virtualmente la caja con el nombre "caja_A" y estás guardando 25 
@@ -662,7 +660,7 @@ exp(1)
             </details>
 
             <details class="consejo">
-                
+                <!-- Convertido en un tip de autoaprendizaje para el alumno -->
                 <summary>💡 Tip de Aprendizaje: Domina tu teclado</summary>
                 <p>Al principio, encontrar los símbolos correctos puede tomar unos segundos. Dedica un momento a ubicar caracteres 
                 clave como la flecha de asignación <code>&lt;-</code> (puedes usar el atajo <strong>Alt + guion</strong> en Windows), 
@@ -676,71 +674,71 @@ exp(1)
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code>
-# 1. Usa R como tu supercalculadora de campo
-x <- 20  
-y <- 5  
+						# 1. Usa R como tu supercalculadora de campo
+						x <- 20  
+						y <- 5  
 						
-# NOTA: muestra el contenido que guardaste en los objetos "x" y "y"
-print(x)
-y
+						# NOTA: muestra el contenido que guardaste en los objetos "x" y "y"
+						print(x)
+						y
 						
-# Calcular (x + y) guardando el resultado en una "caja" llamada z
-z <- x + y
-						
-# Ahora mostraremos el resultado que quedó guardado en el "contenedor" llamada z
-print(z)
-						
-# Entonces decimos que "x", "y" y "z" son VARIABLES
-				
-					
-				
-				
-				
-#--------------------------------
-				
-# Ejemplo
-#Se tiene una muestra de un tronco de <i>Pinus patula</i>. El diámetro es 
-#...de 62 cm y tiene una longitud (o altura) de 14 metros. La 
-#...densidad promedio de la masa seca de <i>Pinus patula</i> es 
-#...aproximadamente de 420 gr/m<sup>3</sup> y,
-#...aproximadamente el 48.5% de esa masa es carbono (C). <br>
-#¿Cuál la cantidad de carbono secuestrado en la muestra?
-				
-#-------------------------------
-# RESOLVAMOS:
-				
-radio <- 0.31
-alt <- 14
-				
-# CALCULEMOS EL VOLUMEN
-vol <- pi * (radio^2) * alt
-				
-# COMO YA SABEMOS EL VOLUMEN Y
-#...CONOCEMOS LA DENSIDAD, ENTONCES
-#...PODEMOS CALCULAR EL PESO DEL TRONCO
-				
-gramos_madera <- 420 * vol
-				
-# CALCULAREMOS LOS GRAMOS DE CARBONO CONTENIDOS EN LA MUESTRA
-carb_proporcion <- 0.485
-carbono <- gramos_madera * carb_proporcion
 
-# PESO SECO DE NUESTRA MUESTRA (gr)
-gramos_madera
+						# Calcular (x + y) guardando el resultado en una "caja" llamada z
+						z <- x + y
+						
+						# Ahora mostraremos el resultado que quedó guardado en el "contenedor" llamada z
+						print(z)
+						
+						# Entonces decimos que "x", "y" y "z" son VARIABLES
 				
-# GRAMOS DE CARBONO CONTENIDO EN LA MUESTRA
-carbono
-				
-#----------------------------------
-				
-# Si se tiene un área de exclusión de <i>Pinus patula</i> donde 
-#...hay 21,350 individuos con un diámetro promedio de 
-#...45 cm y la altura promedio es de 15.35 m.
-# ¿Cuántos kg de carbono se encuentran secuestrados en 
-#...dicha área de exclusión?
-				
-#-------------------------------
 					</code>
+				
+				
+				
+				#--------------------------------
+				
+				# Ejemplo
+				#Se tiene una muestra de un tronco de <i>Pinus patula</i>. El diámetro es 
+				#...de 62 cm y tiene una longitud (o altura) de 14 metros. La 
+				#...densidad promedio de la masa seca de <i>Pinus patula</i> es 
+				#...aproximadamente de 420 gr/m<sup>3</sup> y,
+				#...aproximadamente el 48.5% de esa masa es carbono (C). <br>
+				#¿Cuál la cantidad de carbono secuestrado en la muestra?
+				
+				#-------------------------------
+				# RESOLVAMOS:
+				
+				radio <- 0.31
+				alt <- 14
+				
+				# CALCULEMOS EL VOLUMEN
+				vol <- pi * (radio^2) * alt
+				
+				# COMO YA SABEMOS EL VOLUMEN Y
+				#...CONOCEMOS LA DENSIDAD, ENTONCES
+				#...PODEMOS CALCULAR EL PESO DEL TRONCO
+				
+				gramos_madera <- 420 * vol
+				
+				# CALCULAREMOS LOS GRAMOS DE CARBONO CONTENIDOS EN LA MUESTRA
+				carb_proporcion <- 0.485
+				carbono <- gramos_madera * carb_proporcion
+
+				# PESO SECO DE NUESTRA MUESTRA (gr)
+				gramos_madera
+				
+				# GRAMOS DE CARBONO CONTENIDO EN LA MUESTRA
+				carbono
+				
+				#----------------------------------
+				
+				# Si se tiene un área de exclusión de <i>Pinus patula</i> donde 
+				#...hay 21,350 individuos con un diámetro promedio de 
+				#...45 cm y la altura promedio es de 15.35 m.
+				# ¿Cuántos kg de carbono se encuentran secuestrados en 
+				#...dicha área de exclusión?
+				
+				#-------------------------------
 				</pre>
 		
             </div>
@@ -751,21 +749,21 @@ carbono
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code># 1. En un terreno con árboles de durazno se cosecharon 
-#...632 kg de fruta. El terreno cuenta con un total de 
-#...17 árboles sembrados. 		
-#¿Cuál fue el rendimiento promedio por árbol?
+					#...632 kg de fruta. El terreno cuenta con un total de 
+					#...17 árboles sembrados. 		
+					#¿Cuál fue el rendimiento promedio por árbol?
 					
-# PASO A PASO
-#1. Crea un objeto llamado "cosecha" y guarda ahí la cantidad de kg cosechada.
-#2. Crea un objeto llamado "arboles_num" y guarda ahí la cantidad de árboles que hay en el terreno.
-#3. Crea un objeto llamado "rendimiento" y guarda ahí el cociente obtenido al dividir "cosecha" entre "arboles_num"
-#4. Muestra el valor que se guardó en el objeto "rendimiento"
-					</code>
+					# PASO A PASO
+					#1. Crea un objeto llamado "cosecha" y guarda ahí la cantidad de kg cosechada.
+					#2. Crea un objeto llamado "arboles_num" y guarda ahí la cantidad de árboles que hay en el terreno.
+					#3. Crea un objeto llamado "rendimiento" y guarda ahí el cociente obtenido al dividir "cosecha" entre "arboles_num"
+					#4. Muestra el valor que se guardó en el objeto "rendimiento"
+                
 				</pre>
             </div>
 
             
-
+        </div>
 
         <!-- Bloque 2 -->
         <div class="block-card">
@@ -775,7 +773,7 @@ carbono
             el entorno de R, transformando listas fijas en estructuras de datos dinámicas llamadas <strong>Data Frames</strong>.</p>
 
             <details class="observacion">
-                
+                <!-- Explicación directa al estudiante -->
                 <summary>🔍 ¿Para qué sirven las funciones <b>str()</b> y <b>summary()</b>?</summary>
                 <p>Imagina que <code>str()</code> es como hacerle una radiografía a tus datos para ver su estructura 
                 interna (saber si son textos o números). Por otro lado, <code>summary()</code> es una inspección técnica 
@@ -807,43 +805,42 @@ carbono
 
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
-                <pre>
-					<code># TU TURNO: Captura la tabla anterior en tu consola de R
-planta <- c(1, 2, 3, 4, 5)
-variedad <- c("Criolla", "Criolla", "Mejorada", "Mejorada", "Testigo")
-peso_gr <- c(185, 192, 210, 225, 150)
+                <pre><code># TU TURNO: Captura la tabla anterior en tu consola de R
+					planta <- c(1, 2, 3, 4, 5)
+					variedad <- c("Criolla", "Criolla", "Mejorada", "Mejorada", "Testigo")
+					peso_gr <- c(185, 192, 210, 225, 150)
 
-# Agrupa tus vectores en un contenedor de datos (Data Frame)
-mis_datos <- data.frame(planta, variedad, peso_gr)
+					# Agrupa tus vectores en un contenedor de datos (Data Frame)
+					mis_datos <- data.frame(planta, variedad, peso_gr)
 
-# Inspecciona la estructura de lo que acabas de crear
-str(mis_datos)
-summary(mis_datos)
+					# Inspecciona la estructura de lo que acabas de crear
+					str(mis_datos)
+					summary(mis_datos)
 					
-# Mostraremos el contenido de lo que acabas de crear
-mis_datos
+					# Mostraremos el contenido de lo que acabas de crear
+					mis_datos
 					
 					
-# PLUS
-# Exportaremos nuestro Data Frame a excel
-# Para esto, debemos instalar primero un paquete de R llamado "writexl"
-# Para instalar cualquier paquete usamos la función "install.packages()"
+					# PLUS
+					# Exportaremos nuestro Data Frame a excel
+					# Para esto, debemos instalar primero un paquete de R llamado "writexl"
+					# Para instalar cualquier paquete usamos la función "install.packages()"
 					
-install.packages("writexl")
+					install.packages("writexl")
 					
-# Una vez instalado el paquete deberemos llamarlo con
-# ...la función "library()".
+					# Una vez instalado el paquete deberemos llamarlo con
+					# ...la función "library()".
 					
-library(writexl)
+					library(writexl)
 					
-#Hemos activado el paquete "writexl"
+					#Hemos activado el paquete "writexl"
 
-# 2. Exportar el DataFrame a Excel con la instrucción "write_xlsx"
-write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
+					# 2. Exportar el DataFrame a Excel con la instrucción "write_xlsx"
+					write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
 					
-# Así hemos creado un archivo xlsx cuyo contenido corresponde al objeto "mis_datos" y 
-#...a dicho archivo excel le hemos dado como nombre ""mis_datos_excel.xlsx".
-# Este archivo excel estará guardado en la misma carpeta donde se ubica tu proyecto R
+					# Así hemos creado un archivo xlsx cuyo contenido corresponde al objeto "mis_datos" y 
+					#...a dicho archivo excel le hemos dado como nombre ""mis_datos_excel.xlsx".
+					# Este archivo excel estará guardado en la misma carpeta donde se ubica tu proyecto R
 					
 					</code>
 				</pre>
@@ -853,7 +850,6 @@ write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
             
            
         </div>
-
     </section>
 
     <!-- RUTA 3: SESIÓN 2 -->
@@ -863,11 +859,29 @@ write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
         <!-- Bloque 3 -->
         <div class="block-card">
             <span class="block-badge">Bloque 3 •</span>
-             <h3>Haremos una recopilación de algunas funciones básicas vistas</h3>
-
+             <h3>Algunas funciones básicas y el paquete dplyr</h3>
             <p>
-				Revisaremos el uso de algunas funciones básicas. Ya has conocido algunas <b>funciones</b> fundamentales de R, como por ejemplo:
-			</p>
+				Iinstalaremos un paquete de R llamado "dplyr" el cual utilizaremos para simplificar el
+				lenguaje de nuestro código y así poder construir "cadenas" de instrucciones anidadas.
+            </p>
+            
+            <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre>
+					<code>
+						# Primero instalaremos "dplyr"
+						
+						install.packages("dplyr")
+						
+						# Ahora activaremos el paquete instaladoo usando la función library()
+						
+						library(dplyr)
+
+					</code>
+				</pre>
+            </div>
+            
+            Ya has conocido algunas <b>funciones</b> fundamentales de R, como por ejemplo:
             <ul>
 				<li>str()</li>
 				<li>summary()</li>
@@ -875,7 +889,9 @@ write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
 				<li>library()</li>
             </ul>
             
-            Más adelante introduciremos otras funciones de utilidad.<br><br>
+            En esta sección conoceremos algunas otras funciones como <b>table()</b>, <b>tally()</b> y también <b>group_by()</b>.<br><br>
+            En ocasiones necesitaremos
+            realizar cadenas de operaciones y ejecutar funciones de forma anidada y secuenciada, dplyr nos permite hacer eso.
             <br><br>
             
             Ejemplo:<br>
@@ -886,32 +902,34 @@ write_xlsx(mis_datos, path = "mis_datos_excel.xlsx")
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
                 <pre>
 					<code>
-x <- 5
-y <- 3
+						x <- 5
+						y <- 3
 						
-# Realiza lo siguiente:
-# suma x con y, al resultado extraerle la raíz cuadrada, y de ese
-# último resultado obtén su logaritmo natural.
+						# Realiza lo siguiente:
+						# suma x con y, al resultado extraerle la raíz cuadrada, y de ese
+						# último resultado obtén su logaritmo natural.
 						
-#¿Cómo sería tu aproximación para resolver esta situación?
+						¿Cómo sería tu aproximación para resolver esta situación?
 
 					</code>
 				</pre>
             </div>
             
-
+            <!--
+            (x + y) %>% sqrt() %>% log()
+            -->
             
             
             
             
-          
+            
+            
         </div>
 
         <!-- Bloque 4 -->
         <div class="block-card">
             <span class="block-badge">Bloque 4 • </span>
 			<h3>Explorando nuestros datos meteorológicos</h3>
-			
             Al inicio del curso tuvimos como tarea explorar un archivo csv con información
             meteorológica proveniente de diferentes estaciones. Vamos a importar esa información
             a nuestro proyecto R escribiendo las siguientes líneas de código:
@@ -924,23 +942,22 @@ y <- 3
 						
 						
 						
-# le indicaremos a R donde se encuentran nuestros datos
+						# le indicaremos a R donde se encuentran nuestros datos
 									
-meteorologia <- read.csv("datos_meteorologicos.csv")
+						meteorologia <- read.csv("datos_meteorologicos.csv")
 
-# Ahora exploraremos nuestros datos.
-# Primero revelaremos cuál es la estructura del objeto "meteorologia"
-str(meteorologia)
+						# Ahora exploraremos nuestros datos.
+						# Primero revelaremos cuál es la estructura del objeto "meteorologia"
+						str(meteorologia)
 						
-# ¿Cuántos registros observas que tiene el objeto "meteorologia"?
+						# ¿Cuántos registros observas que tiene el objeto "meteorologia"?
 						
-# Ahora obtendremos estadísticas rápidas de la información contenida en
-#... el objeto "meteorologia"
-summary(meteorologia)
+						# Ahora obtendremos estadísticas rápidas de la información contenida en
+						#... el objeto "meteorologia"
+						summary(meteorologia)
 
-	# ----La función table() nos genera una tabla de frecuencias sobre algún campo categórico
-table(meteorologia$NOM)
-summary(meteorologia[meteorologia$NOM == "San Pedro", ])
+						table(meteorologia$NOM)
+						summary(meteorologia[meteorologia$NOM == "San Pedro", ])
 
 					</code>
 				</pre>
@@ -948,14 +965,13 @@ summary(meteorologia[meteorologia$NOM == "San Pedro", ])
             
             <br><br>
         </div>
-	
     </section>
     
     
     
     <!-- RUTA 3: SESIÓN 3 -->
     <section id="view-sesion3" class="view">
-        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: dplyr y ggplot2</h2>
+        <h2 class="session-title" style="margin-top: 0; margin-bottom: 1.5rem;">Sesión 3: Representaciones gráficas</h2>
 
         <!-- Bloque 5 -->
         <div class="block-card">
@@ -975,10 +991,6 @@ summary(meteorologia[meteorologia$NOM == "San Pedro", ])
             Aprenderemos algunas funciones nuevas de R y del paquete dplyr. Posteriormente
             aprenderemos a construir un loop sencillo para ejecutar acciones de manera iterativa y, por último
             usaremos el paquete ggplot2 para generar algunas gráficas útiles en la exploración de datos.
-			<br><br>
-
-			En ocasiones necesitaremos
-            realizar cadenas de operaciones y ejecutar funciones de forma anidada y secuenciada, dplyr nos permite hacer eso.
             
             <div class="code-container">
                 <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
@@ -999,8 +1011,6 @@ summary(meteorologia2)
 #...SABER CUANTOS REGISTROS HAY DE CADA ESTACIÓN
 table(meteorologia22$NOM)
 
-
-# Instalaremos "dplyr"
 
 #install.packages("dplyr")
 library(dplyr)
@@ -1281,8 +1291,7 @@ shinyApp(ui = ui, server = server)
 					</code>
 				</pre>
             </div>
-
-
+<!--
             <h3>El Diseño de Pruebas Simples</h3>
             <p><strong>Tu objetivo:</strong> Aprenderás a traducir las estacas, hilos y parcelas físicas que 
             trazas en el terreno a una matriz organizada de datos en tu computadora, vinculando el Diseño de 
@@ -1409,11 +1418,103 @@ shinyApp(ui = ui, server = server)
                 </table>
             </div>
         </div>
- 
+ -->
  
  <p style="background-color:#FAC014">&emsp;</p>
  <p style="background-color:#14FA83">&emsp;</p>
  <p style="background-color:#FA5114">&emsp;</p>
+ 
+ <br>
+ <br>
+ 
+ <div class="code-container">
+                <button class="btn-copy" onclick="copyCode(this)">Copiar</button>
+                <pre><code># 1. Code
+    library(dplyr)
+library(tidyr)
+library(broom) # Para convertir los resultados de las pruebas estadísticas en tablas limpias
+
+# 1. Cargar tus datos
+mi_data <- read.csv("tu_archivo.csv")
+
+# 2. El pipeline de análisis estadístico
+tabla_resultados <- mi_data %>%
+  # Pasamos las 8 variables a columnas de tipo clave-valor
+  # (Reemplaza V1:V8 por los nombres de tu primera y última variable si son distintos)
+  pivot_longer(cols = V1:V8, names_to = "Variable", values_to = "Valor") %>%
+  
+  # Agrupamos para hacer el test de forma independiente por cada variable
+  group_by(Variable) %>%
+  
+  # Ejecutamos la prueba t de Welch y extraemos el p-valor automáticamente
+  summarise(
+    P_Valor_Original = t.test(Valor ~ Tratamiento, var.equal = FALSE)$p.value,
+    .groups = "drop"
+  ) %>%
+  
+  # Calculamos el p-valor ajustado (FDR) y definimos si es significativo
+  mutate(
+    P_Valor_Ajustado = p.adjust(P_Valor_Original, method = "BH"),
+    Diferencia_Significativa = if_else(P_Valor_Ajustado < 0.05, "SÍ", "NO")
+  )
+
+# 3. Ver todos los resultados
+print(tabla_resultados)
+
+# 4. ¿Quieres ver rápido solo las variables donde SÍ hay diferencias?
+variables_significativas <- tabla_resultados %>% 
+  filter(Diferencia_Significativa == "SÍ")
+
+print(variables_significativas)
+
+
+
+# ---------------------------------
+# --------------------------------
+
+#PLOT
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# 1. Asegúrate de tener los datos cargados y en formato largo
+# (Esto sirve tanto para el análisis estadístico como para el gráfico)
+datos_largos <- mi_data %>%
+  pivot_longer(cols = V1:V8, names_to = "Variable", values_to = "Valor")
+
+# 2. Código para generar el Multiboxplot
+ggplot(datos_largos, aes(x = Tratamiento, y = Valor, fill = Tratamiento)) +
+  # Dibujamos las cajas (puedes ajustar la transparencia de la caja con alpha si deseas)
+  geom_boxplot(alpha = 0.7, outlier.shape = NA) + 
+  
+  # Añadimos los puntos individuales con jitter de 0.2 y transparencia (alpha)
+  # outlier.shape = NA en el boxplot evita que los puntos atípicos se dupliquen
+  geom_jitter(width = 0.2, height = 0, alpha = 0.5, size = 2, color = "black") +
+  
+  # Separamos el gráfico en 8 paneles independientes (uno por variable)
+  # scales = "free_y" es clave porque cada variable suele tener magnitudes diferentes
+  facet_wrap(~ Variable, scales = "free_y", ncol = 4) +
+  
+  # Personalización estética
+  theme_minimal(base_size = 13) +
+  labs(
+    title = "Comparación de Tratamientos por Variable",
+    subtitle = "8 repeticiones por tratamiento (Puntos individuales con jitter = 0.2)",
+    x = "Tratamiento",
+    y = "Valor Observado"
+  ) +
+  theme(
+    strip.background = element_rect(fill = "grey90", color = NA), # Fondo para títulos de paneles
+    strip.text = element_text(face = "bold"),                      # Títulos de paneles en negrita
+    legend.position = "none"                                       # Quitamos leyenda porque el eje X ya dice el tratamiento
+  ) +
+  # Paleta de colores opcional, agradable a la vista
+  scale_fill_brewer(palette = "Set2")
+
+                
+				
+ </div>
     </section>
     
     
